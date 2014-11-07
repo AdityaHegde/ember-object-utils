@@ -1,10 +1,11 @@
 var require = {
+  baseUrl : "../",
   paths : {
-    source         : "../src/js",
-    jquery         : "../src/js/lib/jquery-2.1.1",
-    handlebars     : "../src/js/lib/handlebars",
-    ember          : "../src/js/lib/ember",
-    ember_qunit    : "../src/js/lib/ember-qunit",
+    source           : "src/js",
+    jquery           : "src/js/lib/jquery-2.1.1",
+    handlebars       : "src/js/lib/handlebars",
+    ember            : "src/js/lib/ember",
+    ember_qunit      : "src/js/lib/ember-qunit",
   },
   shim : {
     ember : {
@@ -16,4 +17,5 @@ var require = {
       exports : "emq",
     },
   },
+  waitSeconds : 10,
 };

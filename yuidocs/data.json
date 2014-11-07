@@ -22,6 +22,17 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/js/ember-utils-core.js": {
+            "name": "src/js/ember-utils-core.js",
+            "modules": {
+                "ember-utils-core": 1
+            },
+            "classes": {
+                "Utils": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/js/hasMany.js": {
             "name": "src/js/hasMany.js",
             "modules": {},
@@ -38,17 +49,6 @@
             "fors": {
                 "Utils": 1
             },
-            "namespaces": {}
-        },
-        "src/js/main.js": {
-            "name": "src/js/main.js",
-            "modules": {
-                "ember-utils-core": 1
-            },
-            "classes": {
-                "Utils": 1
-            },
-            "fors": {},
             "namespaces": {}
         },
         "src/js/misc.js": {
@@ -98,7 +98,7 @@
             "plugin_for": [],
             "extension_for": [],
             "module": "ember-utils-core",
-            "file": "src/js/main.js",
+            "file": "src/js/ember-utils-core.js",
             "line": 13,
             "description": "Global class"
         },
@@ -233,7 +233,8 @@
                 "description": "",
                 "type": "Instance"
             },
-            "class": "Utils"
+            "class": "Utils",
+            "module": "ember-utils-core"
         },
         {
             "file": "src/js/hierarchy.js",
@@ -249,7 +250,8 @@
                     "type": "Object"
                 }
             ],
-            "class": "Utils"
+            "class": "Utils",
+            "module": "ember-utils-core"
         },
         {
             "file": "src/js/hierarchy.js",
@@ -280,7 +282,8 @@
                     "type": "Number"
                 }
             ],
-            "class": "Utils"
+            "class": "Utils",
+            "module": "ember-utils-core"
         },
         {
             "file": "src/js/hierarchy.js",
@@ -310,7 +313,8 @@
                 "description": "",
                 "type": "Instance"
             },
-            "class": "Utils"
+            "class": "Utils",
+            "module": "ember-utils-core"
         },
         {
             "file": "src/js/misc.js",

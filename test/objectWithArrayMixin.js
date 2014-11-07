@@ -1,5 +1,5 @@
 define([
-  "source/main",
+  "source/ember-utils-core",
 ], function(Utils) {
 
 return function() {

@@ -10,22 +10,20 @@ module.exports = {
       skipDirOptimize : true,
       removeCombined : true,
       optimize : "none",
-      wrap: true,
-      /*{
-        //startFile: ["wrap/start.frag", "wrap/almond.js"],
+      wrap : {
         startFile: "wrap/start.frag",
         endFile: "wrap/end.frag"
-      },*/
+      },
 
       modules : [
         {
-          name : "main",
+          name : "ember-utils-core",
+          include : ["lib/almond.js"],
           exclude : [
             "jquery",
             "handlebars",
             "ember",
           ],
-          insertRequire : ["main"],
         },
       ],
     },

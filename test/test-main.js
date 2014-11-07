@@ -3,7 +3,7 @@ define([
   "handlebars",
   "ember",
   "ember_qunit",
-  "test-app",
+  "./test-app",
   "./hasMany",
   "./hasManyWithHeirarchy",
   "./belongsTo",
