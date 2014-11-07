@@ -1,0 +1,7 @@
+default:
+  - 'requirejs'
+  - 'qunit'
+  - 'yuidoc'
+  - 'concat'
+  - 'uglify'
+  - 'clean'

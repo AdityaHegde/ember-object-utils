@@ -1,0 +1,633 @@
+{
+    "project": {
+        "name": "Ember Utils",
+        "description": "A utility module for ember apps."
+    },
+    "files": {
+        "src/js/belongsTo.js": {
+            "name": "src/js/belongsTo.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "Utils": 1
+            },
+            "namespaces": {}
+        },
+        "src/js/delayedAddToHasManyMixin.js": {
+            "name": "src/js/delayedAddToHasManyMixin.js",
+            "modules": {},
+            "classes": {
+                "Utils.DelayedAddToHasManyMixin": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/js/hasMany.js": {
+            "name": "src/js/hasMany.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "Utils": 1
+            },
+            "namespaces": {}
+        },
+        "src/js/hierarchy.js": {
+            "name": "src/js/hierarchy.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "Utils": 1
+            },
+            "namespaces": {}
+        },
+        "src/js/main.js": {
+            "name": "src/js/main.js",
+            "modules": {
+                "ember-utils-core": 1
+            },
+            "classes": {
+                "Utils": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/js/misc.js": {
+            "name": "src/js/misc.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "Utils": 1
+            },
+            "namespaces": {}
+        },
+        "src/js/objectWithArrayMixin.js": {
+            "name": "src/js/objectWithArrayMixin.js",
+            "modules": {},
+            "classes": {
+                "Utils.ObjectWithArrayMixin": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "ember-utils-core": {
+            "name": "ember-utils-core",
+            "submodules": {},
+            "classes": {
+                "Utils": 1,
+                "Utils.DelayedAddToHasManyMixin": 1,
+                "Utils.ObjectWithArrayMixin": 1
+            },
+            "fors": {
+                "Utils": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/js/objectWithArrayMixin.js",
+            "line": 6
+        }
+    },
+    "classes": {
+        "Utils": {
+            "name": "Utils",
+            "shortname": "Utils",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ember-utils-core",
+            "file": "src/js/main.js",
+            "line": 13,
+            "description": "Global class"
+        },
+        "Utils.DelayedAddToHasManyMixin": {
+            "name": "Utils.DelayedAddToHasManyMixin",
+            "shortname": "Utils.DelayedAddToHasManyMixin",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ember-utils-core",
+            "file": "src/js/delayedAddToHasManyMixin.js",
+            "line": 7,
+            "description": "A mixin to add observers to array properties. Used in belongsTo of a ember-data model.\nAdds after the HasMany object is resolved.",
+            "extends": "Utils.ObjectWithArrayMixin",
+            "static": 1
+        },
+        "Utils.ObjectWithArrayMixin": {
+            "name": "Utils.ObjectWithArrayMixin",
+            "shortname": "Utils.ObjectWithArrayMixin",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ember-utils-core",
+            "file": "src/js/objectWithArrayMixin.js",
+            "line": 6,
+            "description": "A mixin to add observers to array properties.",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/js/belongsTo.js",
+            "line": 5,
+            "description": "Creates a computed property for an object that when set with native js object will return an instances of a class.\n\nThe class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,\nthen the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.\n'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.\n\nOptionally can create the instance with mixin. A single mixin can be passed or a map of mixins as 4th parameter with key extracted from object using mixinKey (5th parameter) can be passed.\n'defaultMixin' (6th parameter) is used when object[mixinKey] is not present.",
+            "itemtype": "method",
+            "name": "belongsTo",
+            "static": 1,
+            "params": [
+                {
+                    "name": "modelClass",
+                    "description": "",
+                    "type": "Class|Object"
+                },
+                {
+                    "name": "modelClassKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "defaultKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "mixin",
+                    "description": "",
+                    "type": "Mixin|Object",
+                    "optional": true
+                },
+                {
+                    "name": "mixinKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "defaultMixin",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Instance"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/js/delayedAddToHasManyMixin.js",
+            "line": 48,
+            "description": "Method to add a property after the array prop loads.",
+            "itemtype": "property",
+            "name": "addToProp",
+            "class": "Utils.DelayedAddToHasManyMixin",
+            "subprops": [
+                {
+                    "name": "prop",
+                    "description": "Property of array to add to.",
+                    "type": "String"
+                },
+                {
+                    "name": "propObj",
+                    "description": "Object to add to array.",
+                    "type": "Instance"
+                }
+            ]
+        },
+        {
+            "file": "src/js/hasMany.js",
+            "line": 5,
+            "description": "Creates a computed property for an array that when set with array of native js object will return an array of instances of a class.\n\nThe class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,\nthen the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.\n'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.",
+            "itemtype": "method",
+            "name": "hasMany",
+            "static": 1,
+            "params": [
+                {
+                    "name": "modelClass",
+                    "description": "",
+                    "type": "Class|Object"
+                },
+                {
+                    "name": "modelClassKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "defaultKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Instance"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/js/hierarchy.js",
+            "line": 21,
+            "description": "Register a hierarchy. This will setup the meta of the hierarchy.",
+            "itemtype": "method",
+            "name": "registerHierarchy",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hierarchy",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "Utils"
+        },
+        {
+            "file": "src/js/hierarchy.js",
+            "line": 33,
+            "description": "Add an entry to the hierarchy. It takes care of updating meta also.",
+            "itemtype": "method",
+            "name": "addToHierarchy",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hierarchy",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "classObj",
+                    "description": "",
+                    "type": "Class"
+                },
+                {
+                    "name": "level",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Utils"
+        },
+        {
+            "file": "src/js/hierarchy.js",
+            "line": 64,
+            "description": "Creates a computed property which creates a class for every element in the set array based on hierarchy.\nThe objects in the array can be of any level at or below the current level. An instance with the basic class is automatically wrapped around the objects at lower level.",
+            "itemtype": "method",
+            "name": "hasManyWithHierarchy",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hasManyHierarchy",
+                    "description": "Assumed to be already initialized by calling 'registerHierarchy'.",
+                    "type": "Object"
+                },
+                {
+                    "name": "level",
+                    "description": "Level of the computed property.",
+                    "type": "Number"
+                },
+                {
+                    "name": "key",
+                    "description": "Key used to get the key used in retrieving the class object in the classes map.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Instance"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 5,
+            "description": "Search in a multi level array.",
+            "itemtype": "method",
+            "name": "deepSearchArray",
+            "static": 1,
+            "params": [
+                {
+                    "name": "d",
+                    "description": "Root object to search from.",
+                    "type": "Object"
+                },
+                {
+                    "name": "e",
+                    "description": "Element to search for.",
+                    "type": "Any"
+                },
+                {
+                    "name": "k",
+                    "description": "Key of the element in the object.",
+                    "type": "String"
+                },
+                {
+                    "name": "ak",
+                    "description": "Key of the array to dig deep.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns the found object.",
+                "type": "Object"
+            },
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 31,
+            "description": "Binary insertion within a sorted array.",
+            "itemtype": "method",
+            "name": "binaryInsert",
+            "static": 1,
+            "params": [
+                {
+                    "name": "a",
+                    "description": "Sorted array to insert in.",
+                    "type": "Array"
+                },
+                {
+                    "name": "e",
+                    "description": "Element to insert.",
+                    "type": "Any"
+                },
+                {
+                    "name": "c",
+                    "description": "Optional comparator to use.",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 65,
+            "description": "Merge a src object to a tar object and return tar.",
+            "itemtype": "method",
+            "name": "merge",
+            "static": 1,
+            "params": [
+                {
+                    "name": "tar",
+                    "description": "Target object.",
+                    "type": "Object"
+                },
+                {
+                    "name": "src",
+                    "description": "Source object.",
+                    "type": "Object"
+                },
+                {
+                    "name": "replace",
+                    "description": "Replace keys if they already existed.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns the target object.",
+                "type": "Object"
+            },
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 87,
+            "description": "Checks if an object has any key.",
+            "itemtype": "method",
+            "name": "hashHasKeys",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hash",
+                    "description": "Object to check for keys.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 102,
+            "description": "Returns an array of integers from a starting number to another number with steps.",
+            "itemtype": "method",
+            "name": "getArrayFromRange",
+            "static": 1,
+            "params": [
+                {
+                    "name": "l",
+                    "description": "Starting number.",
+                    "type": "Number"
+                },
+                {
+                    "name": "h",
+                    "description": "Ending number.",
+                    "type": "Number"
+                },
+                {
+                    "name": "s",
+                    "description": "Steps.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 122,
+            "description": "Get the ember assigned id to the instance.",
+            "itemtype": "method",
+            "name": "getEmberId",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Instance"
+                }
+            ],
+            "return": {
+                "description": "Ember assigned id.",
+                "type": "String"
+            },
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 135,
+            "description": "Recursively return the offset of an element relative to a parent element.",
+            "itemtype": "method",
+            "name": "getOffset",
+            "static": 1,
+            "params": [
+                {
+                    "name": "ele",
+                    "description": "",
+                    "type": "DOMElement"
+                },
+                {
+                    "name": "type",
+                    "description": "Type of the offset.",
+                    "type": "String"
+                },
+                {
+                    "name": "parentSelector",
+                    "description": "Selector for the parent.",
+                    "type": "String"
+                },
+                {
+                    "name": "Offset.",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/objectWithArrayMixin.js",
+            "line": 112,
+            "description": "Method called just before array elements will be deleted. This is a fallback method. A method with name <propKey>WillBeDeleted can be added to handle for 'propKey' seperately.",
+            "itemtype": "method",
+            "name": "propWillBeDeleted",
+            "params": [
+                {
+                    "name": "eles",
+                    "description": "The elements that will be deleted.",
+                    "type": "Array"
+                },
+                {
+                    "name": "idxs",
+                    "description": "The indices of the elements that will be deleted.",
+                    "type": "Array"
+                }
+            ],
+            "class": "Utils.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/objectWithArrayMixin.js",
+            "line": 121,
+            "description": "Method called when deciding whether to add an ele or not. This is a fallback method. A method with name <propKey>CanAdd can be added to handle for 'propKey' seperately.",
+            "itemtype": "method",
+            "name": "propCanAdd",
+            "params": [
+                {
+                    "name": "ele",
+                    "description": "The element that can be added or not.",
+                    "type": "Object|Instance"
+                },
+                {
+                    "name": "idx",
+                    "description": "The indice of the element that can be added or not.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Utils.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/objectWithArrayMixin.js",
+            "line": 132,
+            "description": "Method called after array elements are added. This is a fallback method. A method with name <propKey>WasAdded can be added to handle for 'propKey' seperately.",
+            "itemtype": "method",
+            "name": "propWasAdded",
+            "params": [
+                {
+                    "name": "eles",
+                    "description": "The elements that are added.",
+                    "type": "Array"
+                },
+                {
+                    "name": "idxs",
+                    "description": "The indices of the elements that are added.",
+                    "type": "Array"
+                }
+            ],
+            "class": "Utils.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/objectWithArrayMixin.js",
+            "line": 142,
+            "description": "List of keys to array properties.",
+            "itemtype": "property",
+            "name": "arrayProps",
+            "type": "Array",
+            "class": "Utils.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/belongsTo.js:5"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/hasMany.js:5"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/hierarchy.js:64"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/misc.js:5"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/misc.js:65"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/misc.js:87"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/misc.js:102"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/misc.js:122"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/objectWithArrayMixin.js:121"
+        }
+    ]
+}
