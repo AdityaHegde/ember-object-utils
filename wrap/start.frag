@@ -1,7 +1,7 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD.
-    define(['jquery'], factory);
+    define(['jquery', 'ember'], factory);
   } else {
     // Browser globals.
     root.Utils = factory(root.$);

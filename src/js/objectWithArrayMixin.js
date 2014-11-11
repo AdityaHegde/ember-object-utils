@@ -12,10 +12,10 @@ define([
 var ObjectWithArrayMixin = Ember.Mixin.create({
   init : function() {
     this._super();
-    this.set("arrayProps", this.get("arrayProps") || []);
+    Ember.set(this, "arrayProps", this.get("arrayProps") || []);
     this.addArrayObserverToProp("arrayProps");
-    this.set("arrayProps.propKey", "arrayProps");
-    this.arrayPropsWasAdded(this.get("arrayProps"));
+    Ember.set(this, "arrayProps.propKey", "arrayProps");
+    this.arrayPropsWasAdded(this.get("arrayProps") || []);
   },
 
   addBeforeObserverToProp : function(propKey) {

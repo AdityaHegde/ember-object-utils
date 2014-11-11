@@ -128,7 +128,7 @@ var extractIdRegex = /:(ember\d+):?/;
  * @returns {String} Ember assigned id.
  */
 function getEmberId(obj) {
-  var str = obj.toString(), match = str.match(Utils.ExtractIdRegex);
+  var str = obj.toString(), match = str.match(extractIdRegex);
   return match && match[1];
 };
 
@@ -175,6 +175,7 @@ return {
   deepSearchArray : deepSearchArray,
   binaryInsert : binaryInsert,
   merge : merge,
+  hashHasKeys : hashHasKeys,
   getArrayFromRange : getArrayFromRange,
   getEmberId : getEmberId,
   getOffset : getOffset,

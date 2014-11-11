@@ -110,7 +110,7 @@ var delayAddId = 0;
 var DelayedAddToHasManyMixin = Ember.Mixin.create(objectWithArrayMixin, {
   init : function() {
     this._super();
-    this.set(&quot;arrayPropDelayedObjs&quot;, {});
+    Ember.set(this, &quot;arrayPropDelayedObjs&quot;, {});
   },
 
   arrayPropDelayedObjs : null,
