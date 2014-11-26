@@ -13,15 +13,6 @@
             },
             "namespaces": {}
         },
-        "src/js/delayedAddToHasManyMixin.js": {
-            "name": "src/js/delayedAddToHasManyMixin.js",
-            "modules": {},
-            "classes": {
-                "Utils.DelayedAddToHasManyMixin": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "src/js/ember-utils-core.js": {
             "name": "src/js/ember-utils-core.js",
             "modules": {
@@ -76,7 +67,6 @@
             "submodules": {},
             "classes": {
                 "Utils": 1,
-                "Utils.DelayedAddToHasManyMixin": 1,
                 "Utils.ObjectWithArrayMixin": 1
             },
             "fors": {
@@ -99,23 +89,8 @@
             "extension_for": [],
             "module": "ember-utils-core",
             "file": "src/js/ember-utils-core.js",
-            "line": 13,
+            "line": 12,
             "description": "Global class"
-        },
-        "Utils.DelayedAddToHasManyMixin": {
-            "name": "Utils.DelayedAddToHasManyMixin",
-            "shortname": "Utils.DelayedAddToHasManyMixin",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "ember-utils-core",
-            "file": "src/js/delayedAddToHasManyMixin.js",
-            "line": 7,
-            "description": "A mixin to add observers to array properties. Used in belongsTo of a ember-data model.\nAdds after the HasMany object is resolved.",
-            "extends": "Utils.ObjectWithArrayMixin",
-            "static": 1
         },
         "Utils.ObjectWithArrayMixin": {
             "name": "Utils.ObjectWithArrayMixin",
@@ -182,26 +157,6 @@
                 "type": "Instance"
             },
             "class": "Utils"
-        },
-        {
-            "file": "src/js/delayedAddToHasManyMixin.js",
-            "line": 48,
-            "description": "Method to add a property after the array prop loads.",
-            "itemtype": "property",
-            "name": "addToProp",
-            "class": "Utils.DelayedAddToHasManyMixin",
-            "subprops": [
-                {
-                    "name": "prop",
-                    "description": "Property of array to add to.",
-                    "type": "String"
-                },
-                {
-                    "name": "propObj",
-                    "description": "Object to add to array.",
-                    "type": "Instance"
-                }
-            ]
         },
         {
             "file": "src/js/hasMany.js",

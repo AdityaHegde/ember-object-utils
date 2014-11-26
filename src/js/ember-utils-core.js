@@ -5,7 +5,6 @@ define([
   "./hasMany",
   "./belongsTo",
   "./hierarchy",
-  "./delayedAddToHasManyMixin",
   "./objectWithArrayMixin",
   //"./hashMapArray",
   "./misc",

@@ -26,7 +26,8 @@ define([
 function belongsTo(modelClass, modelClassKey, defaultKey, mixin, mixinKey, defaultMixin) {
   modelClass = modelClass || Ember.Object;
   var hasInheritance = Ember.typeOf(modelClass) !== "class",
-      hasMixin = mixin instanceof Ember.Mixin;
+      hasMixin = mixin instanceof Ember.Mixin,
+      hasMixinInheritance = !hasMixin && Ember.typeOf(mixin) === "object";
   return Ember.computed(function(key, newval) {
     if(Ember.typeOf(modelClass) === 'string') {
       modelClass = Ember.get(modelClass);
@@ -35,6 +36,7 @@ function belongsTo(modelClass, modelClassKey, defaultKey, mixin, mixinKey, defau
     if(Ember.typeOf(mixin) === 'string') {
       mixin = Ember.get(mixin);
       hasMixin = mixin instanceof Ember.Mixin;
+      hasMixinInheritance = !hasMixin && Ember.typeOf(mixin) === "object";
     }
     if(arguments.length > 1) {
       if(newval) {
@@ -42,7 +44,10 @@ function belongsTo(modelClass, modelClassKey, defaultKey, mixin, mixinKey, defau
         if(hasInheritance) classObj = modelClass[Ember.isEmpty(newval[modelClassKey]) ? defaultKey : newval[modelClassKey]];
         if(!(newval instanceof classObj)) {
           if(hasMixin) {
-            newval = classObj.createWithMixins(newval, mixinMap[newval[mixinKey] || defaultMixin]);
+            newval = classObj.createWithMixins(mixin, newval);
+          }
+          else if(hasMixinInheritance) {
+            newval = classObj.createWithMixins(mixin[newval[mixinKey] || defaultMixin], newval);
           }
           else {
             newval = classObj.create(newval);
