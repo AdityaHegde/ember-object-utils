@@ -161,7 +161,7 @@
         {
             "file": "src/js/hasMany.js",
             "line": 5,
-            "description": "Creates a computed property for an array that when set with array of native js object will return an array of instances of a class.\n\nThe class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,\nthen the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.\n'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.",
+            "description": "Creates a computed property for an array that when set with array of native js object will return an array of instances of a class.\n\nThe class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,\nthen the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.\n'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.\n\nCan pass a 4th argument. A registry of objects. If the object (identified by an idKey) is already present, reference to the object is returned.\n5th argument is the idKey",
             "itemtype": "method",
             "name": "hasMany",
             "static": 1,
@@ -179,6 +179,18 @@
                 },
                 {
                     "name": "defaultKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "registry",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "idKey",
                     "description": "",
                     "type": "String",
                     "optional": true

@@ -101,32 +101,52 @@ define([
  * then the &#x27;modelClassKey&#x27; in the object is used as a key in &#x27;modelClass&#x27; the object to get the class.
  * &#x27;defaultKey&#x27; the 3rd parameter is used as a default if object[modelClassKey] is not present.
  *
+ * Can pass a 4th argument. A registry of objects. If the object (identified by an idKey) is already present, reference to the object is returned.
+ * 5th argument is the idKey
+ *
  * @method hasMany
  * @for Utils
  * @static
  * @param {Class|Object} modelClass
  * @param {String} [modelClassKey]
  * @param {String} [defaultKey]
+ * @param {Object} [registry]
+ * @param {String} [idKey]
  * @returns {Instance}
  */
-function hasMany(modelClass, modelClassKey, defaultKey) {
+function hasMany(modelClass, modelClassKey, defaultKey, registry, idKey) {
   modelClass = modelClass || Ember.Object;
-  var hasInheritance = Ember.typeOf(modelClass) !== &quot;class&quot;;
+  var
+  hasInheritance = Ember.typeOf(modelClass) !== &quot;class&quot;,
+  hasRegistry = registry &amp;&amp; idKey;
 
   return Ember.computed(function(key, newval) {
     if(Ember.typeOf(modelClass) === &#x27;string&#x27;) {
       modelClass = Ember.get(modelClass);
       hasInheritance = Ember.typeOf(modelClass) !== &quot;class&quot;;
     }
+    if(Ember.typeOf(registry) === &#x27;string&#x27;) {
+      registry = Ember.get(registry);
+      hasRegistry = registry &amp;&amp; idKey;
+    }
     if(arguments.length &gt; 1) {
       if(newval &amp;&amp; newval.length) {
         newval.beginPropertyChanges();
         for(var i = 0; i &lt; newval.length; i++) {
-          var obj = newval[i], classObj = modelClass;
-          if(hasInheritance) classObj = modelClass[Ember.isEmpty(obj[modelClassKey]) ? defaultKey : obj[modelClassKey]];
-          if(!(obj instanceof classObj)) {
-            obj = classObj.create(obj);
-            obj.set(&quot;parentObj&quot;, this);
+          var
+          obj = newval[i], classObj = modelClass;
+          if(hasRegistry &amp;&amp; registry[obj[idKey]]) {
+            obj = registry[obj[idKey]];
+          }
+          else {
+            if(hasInheritance) classObj = modelClass[Ember.isEmpty(obj[modelClassKey]) ? defaultKey : obj[modelClassKey]];
+            if(!(obj instanceof classObj)) {
+              obj = classObj.create(obj);
+              obj.set(&quot;parentObj&quot;, this);
+            }
+            if(hasRegistry) {
+              registry[obj[idKey]] = obj;
+            }
           }
           newval.splice(i, 1, obj);
         }

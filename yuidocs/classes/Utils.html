@@ -1493,6 +1493,18 @@ then the &#39;modelClassKey&#39; in the object is used as a key in &#39;modelCla
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[registry]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[idKey]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -1543,6 +1555,8 @@ then the &#39;modelClassKey&#39; in the object is used as a key in &#39;modelCla
 <p>The class is decided by the 1st param &#39;modelClass&#39;. If it is not a class but an object and &#39;modelClassKey&#39;, the 2nd parameter is a string,
 then the &#39;modelClassKey&#39; in the object is used as a key in &#39;modelClass&#39; the object to get the class.
 &#39;defaultKey&#39; the 3rd parameter is used as a default if object[modelClassKey] is not present.</p>
+<p>Can pass a 4th argument. A registry of objects. If the object (identified by an idKey) is already present, reference to the object is returned.
+5th argument is the idKey</p>
 
     </div>
 
@@ -1586,6 +1600,38 @@ then the &#39;modelClassKey&#39; in the object is used as a key in &#39;modelCla
                 <li class="param">
                     
                         <code class="param-name optional">[defaultKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[registry]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[idKey]</code>
                         <span class="type">String</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
