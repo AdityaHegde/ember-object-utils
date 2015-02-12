@@ -1,5 +1,5 @@
 module.exports = {
-  options : {
+  coverage : {
     src : "coverage/lcov.info",
   },
 };
