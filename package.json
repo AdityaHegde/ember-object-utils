@@ -33,6 +33,7 @@
     "grunt-concurrent": "*",
     "grunt-qunit-istanbul": "*",
     "grunt-contrib-clean": "*",
+    "grunt-coveralls": "*",
     "load-grunt-config": "*",
     "time-grunt": "*",
     "yuidocjs": "*",
