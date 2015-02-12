@@ -40,7 +40,8 @@
   },
   "bundleDependencies": [],
   "scripts" : {
-    "test" : "./node_modules/karma/bin/karma start karma.conf.js",
+    "test" : "./node_modules/.bin/grunt",
+    "build" : "./node_modules/.bin/grunt",
     "start" : "node server.js"
   }
 }
