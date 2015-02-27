@@ -934,6 +934,11 @@ define('misc',[
   "ember",
 ], function() {
 
+var
+typeOf = function(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+};
+
 /**
  * Search in a multi level array.
  *
@@ -1005,13 +1010,33 @@ function binaryInsert(a, e, c) {
  * @returns {Object} Returns the target object.
  */
 function merge(tar, src, replace) {
-  for(var k in src) {
-    if(!src.hasOwnProperty(k) || !Ember.isNone(tar[k])) {
-      continue;
+  if(Ember.isNone(tar)) {
+    return src;
+  }
+  else if(Ember.isNone(src)) {
+    return tar;
+  }
+  if(typeOf(src) === "object") {
+    for(var k in src) {
+      if(src.hasOwnProperty(k)) {
+        if(Ember.isNone(tar[k]) || replace) {
+          tar[k] = merge(tar[k], src[k], replace);
+        }
+      }
     }
-    if(Ember.isEmpty(tar[k]) || replace) {
-      tar[k] = src[k];
+  }
+  else if(typeOf(src) === "array") {
+    if(src.length === tar.length) {
+      for(var i = 0; i < src.length; i++) {
+        tar[i] = merge(tar[i], src[i], replace);
+      }
     }
+    else {
+      return src;
+    }
+  }
+  else {
+    return src;
   }
   return tar;
 };
