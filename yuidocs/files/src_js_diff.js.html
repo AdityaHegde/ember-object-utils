@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/js/misc.js - Ember Utils</title>
+    <title>src/js/diff.js - Ember Utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -77,7 +77,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: src/js/misc.js</h1>
+<h1 class="file-heading">File: src/js/diff.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -85,163 +85,84 @@ define([
   &quot;ember&quot;,
 ], function() {
 
-
-/**
- * Search in a multi level array.
- *
- * @method deepSearchArray
- * @for Utils
- * @static
- * @param {Object} d Root object to search from.
- * @param {any} e Element to search for.
- * @param {String} k Key of the element in the object.
- * @param {String} ak Key of the array to dig deep.
- * @returns {Object} Returns the found object.
- */
-function deepSearchArray(d, e, k, ak) { //d - data, e - element, k - key, ak - array key
-  if(e === undefined || e === null) return null;
-  if(d[k] === e) return d;
-  if(d[ak]) {
-    for(var i = 0; i &lt; d[ak].length; i++) {
-      var ret = Utils.deepSearchArray(d[ak][i], e, k, ak);
-      if(ret) {
-        return ret;
-      }
-    }
-  }
-  return null;
-};
-
-/**
- * Binary insertion within a sorted array.
- *
- * @method binaryInsert
- * @static
- * @param {Array} a Sorted array to insert in.
- * @param {any} e Element to insert.
- * @param {Function} [c] Optional comparator to use.
- */
-var cmp = function(a, b) {
-  return a - b;
-};
-var binarySearch = function(a, e, l, h, c) {
-  var i = Math.floor((h + l) / 2), o = a.objectAt(i);
-  if(l &gt; h) return l;
-  if(c(e, o) &gt;= 0) {
-    return binarySearch(a, e, i + 1, h, c);
-  }
-  else {
-    return binarySearch(a, e, l, i - 1, c);
-  }
-};
-function binaryInsert(a, e, c) {
-  c = c || cmp;
-  var len = a.get(&quot;length&quot;);
-  if(len &gt; 0) {
-    var i = binarySearch(a, e, 0, len - 1, c);
-    a.insertAt(i, e);
-  }
-  else {
-    a.pushObject(e);
-  }
-};
-
-/**
- * Checks if an object has any key.
- *
- * @method hashHasKeys
- * @static
- * @param {Object} hash Object to check for keys.
- * @returns {Boolean}
- */
-function hashHasKeys(hash) {
-  for(var k in hash) {
-    if(hash.hasOwnProperty(k)) return true;
-  }
-  return false;
-};
-
-/**
- * Returns an array of integers from a starting number to another number with steps.
- *
- * @method getArrayFromRange
- * @static
- * @param {Number} l Starting number.
- * @param {Number} h Ending number.
- * @param {Number} s Steps.
- * @returns {Array}
- */
-function getArrayFromRange(l, h, s) {
-  var a = [];
-  s = s || 1;
-  for(var i = l; i &lt; h; i += s) {
-    a.push(i);
-  }
-  return a;
-};
-
-var extractIdRegex = /:(ember\d+):?/;
-/**
- * Get the ember assigned id to the instance.
- *
- * @method getEmberId
- * @static
- * @param {Instance} obj
- * @returns {String} Ember assigned id.
- */
-function getEmberId(obj) {
-  var str = obj.toString(), match = str.match(extractIdRegex);
-  return match &amp;&amp; match[1];
-};
-
-/**
- * Recursively return the offset of an element relative to a parent element.
- *
- * @method getOffset
- * @static
- * @param {DOMElement} ele
- * @param {String} type Type of the offset.
- * @param {String} parentSelector Selector for the parent.
- * @param {Number} Offset.
- */
-function getOffset(ele, type, parentSelector) {
-  parentSelector = parentSelector || &quot;body&quot;;
-  if(!Ember.isEmpty($(ele).filter(parentSelector))) {
-    return 0;
-  }
-  return ele[&quot;offset&quot;+type] + Utils.getOffset(ele.offsetParent, type, parentSelector);
-};
-
-function emberDeepEqual(src, tar) {
-  for(var k in tar) {
-    var kObj = src.get(k);
-    if(Ember.typeOf(tar[k]) === &quot;object&quot; || Ember.typeOf(tar[k]) === &quot;instance&quot;) {
-      return Utils.emberDeepEqual(kObj, tar[k]);
-    }
-    else if(Ember.typeOf(tar[k]) === &quot;array&quot;) {
-      for(var i = 0; i &lt; tar[k].length; i++) {
-        if(!Utils.emberDeepEqual(kObj.objectAt(i), tar[k][i])) {
-          return false;
+var
+typeOf = function(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+},
+_diff = function(srcObj, tarObj, meta) {
+  var
+  diffObj,
+  hasDiff = 0,
+  fullKey = meta.hierarchy.join(&quot;.&quot;),
+  fullKeyActual = meta.hierarchyActual.join(&quot;.&quot;);
+  if(typeOf(srcObj) === &quot;object&quot;) {
+    //console.log(&quot;Object : &quot; + fullKeyActual);
+    if(typeOf(tarObj) === &quot;object&quot;) {
+      diffObj = {};
+      for(var k in tarObj) {
+        meta.hierarchy.push(k);
+        meta.hierarchyActual.push(k);
+        var d = _diff(srcObj[k], tarObj[k], meta);
+        meta.hierarchyActual.pop();
+        meta.hierarchy.pop();
+        if(d !== undefined) {
+          diffObj[k] = d;
+          hasDiff = 1;
         }
       }
     }
-    else if(tar[k] !== kObj) {
-      console.log(kObj + &quot; not equal to &quot; + tar[k] + &quot; for key : &quot; + k);
-      return false;
+  }
+  else if(typeOf(srcObj) === &quot;array&quot;) {
+    //console.log(&quot;Array : &quot; + fullKeyActual);
+    if(typeOf(tarObj) === &quot;array&quot;) {
+      diffObj = [];
+      for(var i = 0; i &lt; tarObj.length; i++) {
+        meta.hierarchy.push(&quot;@&quot;);
+        meta.hierarchyActual.push(i);
+        var d = _diff(srcObj[i], tarObj[i], meta);
+        meta.hierarchyActual.pop();
+        meta.hierarchy.pop();
+        diffObj.push(d);
+        if(d !== undefined) {
+          hasDiff = 1;
+        }
+      }
     }
   }
-  return true;
+  else {
+    //console.log(&quot;Scalar : &quot; + fullKeyActual);
+    if(!meta.ignoreKeys[fullKey]) {
+      if(srcObj !== tarObj) {
+        diffObj = tarObj;
+        hasDiff = 1;
+      }
+    }
+  }
+  return hasDiff === 1 ? diffObj : undefined;
+},
+/**
+ * Return the diff of 2 objects.
+ *
+ * @method diff
+ * @for Utils
+ * @static
+ * @param {Object} srcObj
+ * @param {Object} tarObj
+ * @param {Object} [ignoreKeys] A map of keys to ignore.
+ * @returns {Object}
+ */
+diff = function(srcObj, tarObj, ignoreKeys) {
+  return _diff(srcObj, tarObj, {
+    ignoreKeys      : ignoreKeys || {},
+    hierarchy       : [],
+    hierarchyActual : [],
+  });
 };
 
 return {
-  deepSearchArray : deepSearchArray,
-  binaryInsert : binaryInsert,
-  hashHasKeys : hashHasKeys,
-  getArrayFromRange : getArrayFromRange,
-  getEmberId : getEmberId,
-  getOffset : getOffset,
-  emberDeepEqual : emberDeepEqual,
+  diff : diff,
 };
+
 
 });
 

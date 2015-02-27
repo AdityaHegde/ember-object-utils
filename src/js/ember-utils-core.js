@@ -8,6 +8,8 @@ define([
   "./objectWithArrayMixin",
   //"./hashMapArray",
   "./misc",
+  "./diff",
+  "./merge",
 ], function() {
   /**
    * Global class

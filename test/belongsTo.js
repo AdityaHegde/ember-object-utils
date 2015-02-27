@@ -4,7 +4,7 @@ define([
 
 return function() {
 
-module("Utils.Utils.belongsTo");
+module("Utils.belongsTo");
 
 test("Simple Utils.belongsTo", function() {
   var 

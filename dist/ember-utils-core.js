@@ -934,10 +934,6 @@ define('misc',[
   "ember",
 ], function() {
 
-var
-typeOf = function(obj) {
-  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-};
 
 /**
  * Search in a multi level array.
@@ -997,48 +993,6 @@ function binaryInsert(a, e, c) {
   else {
     a.pushObject(e);
   }
-};
-
-/**
- * Merge a src object to a tar object and return tar.
- *
- * @method merge
- * @static
- * @param {Object} tar Target object.
- * @param {Object} src Source object.
- * @param {Boolean} [replace=false] Replace keys if they already existed.
- * @returns {Object} Returns the target object.
- */
-function merge(tar, src, replace) {
-  if(Ember.isNone(tar)) {
-    return src;
-  }
-  else if(Ember.isNone(src)) {
-    return tar;
-  }
-  if(typeOf(src) === "object") {
-    for(var k in src) {
-      if(src.hasOwnProperty(k)) {
-        if(Ember.isNone(tar[k]) || replace) {
-          tar[k] = merge(tar[k], src[k], replace);
-        }
-      }
-    }
-  }
-  else if(typeOf(src) === "array") {
-    if(src.length === tar.length) {
-      for(var i = 0; i < src.length; i++) {
-        tar[i] = merge(tar[i], src[i], replace);
-      }
-    }
-    else {
-      return src;
-    }
-  }
-  else {
-    return src;
-  }
-  return tar;
 };
 
 /**
@@ -1131,12 +1085,155 @@ function emberDeepEqual(src, tar) {
 return {
   deepSearchArray : deepSearchArray,
   binaryInsert : binaryInsert,
-  merge : merge,
   hashHasKeys : hashHasKeys,
   getArrayFromRange : getArrayFromRange,
   getEmberId : getEmberId,
   getOffset : getOffset,
   emberDeepEqual : emberDeepEqual,
+};
+
+});
+
+define('diff',[
+  "ember",
+], function() {
+
+var
+typeOf = function(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+},
+_diff = function(srcObj, tarObj, meta) {
+  var
+  diffObj,
+  hasDiff = 0,
+  fullKey = meta.hierarchy.join("."),
+  fullKeyActual = meta.hierarchyActual.join(".");
+  if(typeOf(srcObj) === "object") {
+    //console.log("Object : " + fullKeyActual);
+    if(typeOf(tarObj) === "object") {
+      diffObj = {};
+      for(var k in tarObj) {
+        meta.hierarchy.push(k);
+        meta.hierarchyActual.push(k);
+        var d = _diff(srcObj[k], tarObj[k], meta);
+        meta.hierarchyActual.pop();
+        meta.hierarchy.pop();
+        if(d !== undefined) {
+          diffObj[k] = d;
+          hasDiff = 1;
+        }
+      }
+    }
+  }
+  else if(typeOf(srcObj) === "array") {
+    //console.log("Array : " + fullKeyActual);
+    if(typeOf(tarObj) === "array") {
+      diffObj = [];
+      for(var i = 0; i < tarObj.length; i++) {
+        meta.hierarchy.push("@");
+        meta.hierarchyActual.push(i);
+        var d = _diff(srcObj[i], tarObj[i], meta);
+        meta.hierarchyActual.pop();
+        meta.hierarchy.pop();
+        diffObj.push(d);
+        if(d !== undefined) {
+          hasDiff = 1;
+        }
+      }
+    }
+  }
+  else {
+    //console.log("Scalar : " + fullKeyActual);
+    if(!meta.ignoreKeys[fullKey]) {
+      if(srcObj !== tarObj) {
+        diffObj = tarObj;
+        hasDiff = 1;
+      }
+    }
+  }
+  return hasDiff === 1 ? diffObj : undefined;
+},
+/**
+ * Return the diff of 2 objects.
+ *
+ * @method diff
+ * @for Utils
+ * @static
+ * @param {Object} srcObj
+ * @param {Object} tarObj
+ * @param {Object} [ignoreKeys] A map of keys to ignore.
+ * @returns {Object}
+ */
+diff = function(srcObj, tarObj, ignoreKeys) {
+  return _diff(srcObj, tarObj, {
+    ignoreKeys      : ignoreKeys || {},
+    hierarchy       : [],
+    hierarchyActual : [],
+  });
+};
+
+return {
+  diff : diff,
+};
+
+
+});
+
+define('merge',[
+  "ember",
+], function() {
+
+var
+typeOf = function(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+};
+
+/**
+ * Merge a src object to a tar object and return tar.
+ *
+ * @method merge
+ * @for Utils
+ * @static
+ * @param {Object} tar Target object.
+ * @param {Object} src Source object.
+ * @param {Boolean} [replace=false] Replace keys if they already existed.
+ * @returns {Object} Returns the target object.
+ */
+function merge(tar, src, replace) {
+  if(Ember.isNone(tar)) {
+    return src;
+  }
+  else if(Ember.isNone(src)) {
+    return tar;
+  }
+  if(typeOf(src) === "object") {
+    for(var k in src) {
+      if(src.hasOwnProperty(k)) {
+        if(Ember.isNone(tar[k]) || replace) {
+          tar[k] = merge(tar[k], src[k], replace);
+        }
+      }
+    }
+  }
+  else if(typeOf(src) === "array") {
+    if(src.length === tar.length) {
+      for(var i = 0; i < src.length; i++) {
+        tar[i] = merge(tar[i], src[i], replace);
+      }
+    }
+    else {
+      return src;
+    }
+  }
+  else {
+    return src;
+  }
+  return tar;
+};
+
+
+return {
+  merge : merge,
 };
 
 });
@@ -1151,6 +1248,8 @@ define('ember-utils-core',[
   "./objectWithArrayMixin",
   //"./hashMapArray",
   "./misc",
+  "./diff",
+  "./merge",
 ], function() {
   /**
    * Global class

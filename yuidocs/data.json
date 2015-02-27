@@ -13,6 +13,15 @@
             },
             "namespaces": {}
         },
+        "src/js/diff.js": {
+            "name": "src/js/diff.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "Utils": 1
+            },
+            "namespaces": {}
+        },
         "src/js/ember-utils-core.js": {
             "name": "src/js/ember-utils-core.js",
             "modules": {
@@ -35,6 +44,15 @@
         },
         "src/js/hierarchy.js": {
             "name": "src/js/hierarchy.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "Utils": 1
+            },
+            "namespaces": {}
+        },
+        "src/js/merge.js": {
+            "name": "src/js/merge.js",
             "modules": {},
             "classes": {},
             "fors": {
@@ -89,7 +107,7 @@
             "extension_for": [],
             "module": "ember-utils-core",
             "file": "src/js/ember-utils-core.js",
-            "line": 12,
+            "line": 14,
             "description": "Global class"
         },
         "Utils.ObjectWithArrayMixin": {
@@ -167,6 +185,37 @@
             "return": {
                 "description": "",
                 "type": "Instance"
+            },
+            "class": "Utils"
+        },
+        {
+            "file": "src/js/diff.js",
+            "line": 60,
+            "description": "Return the diff of 2 objects.",
+            "itemtype": "method",
+            "name": "diff",
+            "static": 1,
+            "params": [
+                {
+                    "name": "srcObj",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "tarObj",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "ignoreKeys",
+                    "description": "A map of keys to ignore.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
             },
             "class": "Utils"
         },
@@ -296,8 +345,41 @@
             "module": "ember-utils-core"
         },
         {
-            "file": "src/js/misc.js",
+            "file": "src/js/merge.js",
             "line": 10,
+            "description": "Merge a src object to a tar object and return tar.",
+            "itemtype": "method",
+            "name": "merge",
+            "static": 1,
+            "params": [
+                {
+                    "name": "tar",
+                    "description": "Target object.",
+                    "type": "Object"
+                },
+                {
+                    "name": "src",
+                    "description": "Source object.",
+                    "type": "Object"
+                },
+                {
+                    "name": "replace",
+                    "description": "Replace keys if they already existed.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns the target object.",
+                "type": "Object"
+            },
+            "class": "Utils",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "src/js/misc.js",
+            "line": 6,
             "description": "Search in a multi level array.",
             "itemtype": "method",
             "name": "deepSearchArray",
@@ -333,7 +415,7 @@
         },
         {
             "file": "src/js/misc.js",
-            "line": 36,
+            "line": 32,
             "description": "Binary insertion within a sorted array.",
             "itemtype": "method",
             "name": "binaryInsert",
@@ -361,40 +443,7 @@
         },
         {
             "file": "src/js/misc.js",
-            "line": 70,
-            "description": "Merge a src object to a tar object and return tar.",
-            "itemtype": "method",
-            "name": "merge",
-            "static": 1,
-            "params": [
-                {
-                    "name": "tar",
-                    "description": "Target object.",
-                    "type": "Object"
-                },
-                {
-                    "name": "src",
-                    "description": "Source object.",
-                    "type": "Object"
-                },
-                {
-                    "name": "replace",
-                    "description": "Replace keys if they already existed.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
-            ],
-            "return": {
-                "description": "Returns the target object.",
-                "type": "Object"
-            },
-            "class": "Utils",
-            "module": "ember-utils-core"
-        },
-        {
-            "file": "src/js/misc.js",
-            "line": 112,
+            "line": 66,
             "description": "Checks if an object has any key.",
             "itemtype": "method",
             "name": "hashHasKeys",
@@ -415,7 +464,7 @@
         },
         {
             "file": "src/js/misc.js",
-            "line": 127,
+            "line": 81,
             "description": "Returns an array of integers from a starting number to another number with steps.",
             "itemtype": "method",
             "name": "getArrayFromRange",
@@ -446,7 +495,7 @@
         },
         {
             "file": "src/js/misc.js",
-            "line": 147,
+            "line": 101,
             "description": "Get the ember assigned id to the instance.",
             "itemtype": "method",
             "name": "getEmberId",
@@ -467,7 +516,7 @@
         },
         {
             "file": "src/js/misc.js",
-            "line": 160,
+            "line": 114,
             "description": "Recursively return the offset of an element relative to a parent element.",
             "itemtype": "method",
             "name": "getOffset",
@@ -582,6 +631,10 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/diff.js:60"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
             "line": " src/js/hasMany.js:5"
         },
         {
@@ -590,23 +643,23 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/misc.js:10"
+            "line": " src/js/merge.js:10"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/misc.js:70"
+            "line": " src/js/misc.js:6"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/misc.js:112"
+            "line": " src/js/misc.js:66"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/misc.js:127"
+            "line": " src/js/misc.js:81"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/misc.js:147"
+            "line": " src/js/misc.js:101"
         },
         {
             "message": "replacing incorrect tag: returns with return",

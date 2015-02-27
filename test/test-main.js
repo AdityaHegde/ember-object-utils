@@ -9,6 +9,8 @@ define([
   "./belongsTo",
   "./objectWithArrayMixin",
   "./misc",
+  "./merge",
+  "./diff",
 ], function() {
   for(var i = 5; i < arguments.length; i++) {
     arguments[i]();

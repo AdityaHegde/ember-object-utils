@@ -4,7 +4,7 @@ define([
 
 return function() {
 
-module("Utils.Utils.hasMany");
+module("Utils.hasMany");
 
 test("Simple Utils.hasMany", function() {
   var 
