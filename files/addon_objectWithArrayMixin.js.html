@@ -17,7 +17,7 @@
                 <h1><img src="../assets/css/logo.png" title="ember-utils-core" width="117" height="52"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.0.</em>
+            <em>API Docs for: 1.0.0.14108463</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -82,7 +82,25 @@
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
-import misc from &#x27;./misc&#x27;;
+
+/**
+ * Returns an array of integers from a starting number to another number with steps.
+ *
+ * @method getArrayFromRange
+ * @static
+ * @param {Number} l Starting number.
+ * @param {Number} h Ending number.
+ * @param {Number} s Steps.
+ * @returns {Array}
+ */
+function getArrayFromRange(l, h, s) {
+  var a = [];
+  s = s || 1;
+  for(var i = l; i &lt; h; i += s) {
+    a.push(i);
+  }
+  return a;
+}
 
 /**
  * A mixin to add observers to array properties.
@@ -119,7 +137,7 @@ export default Ember.Mixin.create({
     this.removeArrayObserverFromProp(key);
     var prop = this.get(key);
     if(prop &amp;&amp; prop.objectsAt) {
-      var idxs = misc.getArrayFromRange(0, prop.get(&quot;length&quot;));
+      var idxs = getArrayFromRange(0, prop.get(&quot;length&quot;));
       this[key+&quot;WillBeDeleted&quot;](prop.objectsAt(idxs), idxs, true);
     }
   },
@@ -134,7 +152,7 @@ export default Ember.Mixin.create({
 
   propArrayNotifyChange : function(prop, key) {
     if(prop.objectsAt) {
-      var idxs = misc.getArrayFromRange(0, prop.get(&quot;length&quot;));
+      var idxs = getArrayFromRange(0, prop.get(&quot;length&quot;));
       this[key+&quot;WasAdded&quot;](prop.objectsAt(idxs), idxs, true);
     }
   },
@@ -162,7 +180,7 @@ export default Ember.Mixin.create({
 
   propArrayWillChange : function(array, idx, removedCount, addedCount) {
     if((array.content || array.length) &amp;&amp; array.get(&quot;length&quot;) &gt; 0) {
-      var propKey = array.get(&quot;propKey&quot;), idxs = misc.getArrayFromRange(idx, idx + removedCount);
+      var propKey = array.get(&quot;propKey&quot;), idxs = getArrayFromRange(idx, idx + removedCount);
       this[propKey+&quot;WillBeDeleted&quot;](array.objectsAt(idxs), idxs);
     }
     //for jshint

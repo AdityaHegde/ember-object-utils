@@ -17,7 +17,7 @@
                 <h1><img src="../assets/css/logo.png" title="ember-utils-core" width="117" height="52"></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 1.0.0.</em>
+            <em>API Docs for: 1.0.0.14108463</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -90,12 +90,10 @@ import hasMany              from &quot;./hasMany&quot;;
 import belongsTo            from &quot;./belongsTo&quot;;
 import hierarchy            from &quot;./hierarchy/index&quot;;
 import objectWithArrayMixin from &quot;./objectWithArrayMixin&quot;;
-import misc                 from &quot;./misc&quot;;
-import merge                from &quot;./merge&quot;;
 
 var
 EmberUtilsCore = Ember.Namespace.create(),
-modules = [hierarchy, misc];
+modules = [hierarchy];
 
 for(var i = 0; i &lt; modules.length; i++) {
   for(var k in modules[i]) {
@@ -108,7 +106,6 @@ for(var i = 0; i &lt; modules.length; i++) {
 EmberUtilsCore.hasMany = hasMany;
 EmberUtilsCore.belongsTo = belongsTo;
 EmberUtilsCore.ObjectWithArrayMixin = objectWithArrayMixin;
-EmberUtilsCore.merge = merge;
 
 export default EmberUtilsCore;
 
