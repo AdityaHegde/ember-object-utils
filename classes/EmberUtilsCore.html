@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>EmberUtilsCore - ember-utils-core</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="ember-utils-core" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.0.0.</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/EmberUtilsCore.html">EmberUtilsCore</a></li>
+                                <li><a href="../classes/EmberUtilsCore.ObjectWithArrayMixin.html">EmberUtilsCore.ObjectWithArrayMixin</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/ember-utils-core.html">ember-utils-core</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>EmberUtilsCore Class</h1>
+<div class="box meta">
+
+
+
+            Module: <a href="../modules/ember-utils-core.html">ember-utils-core</a>
+
+</div>
+
+
+<div class="box intro">
+    
+</div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method">
+                                <a href="#method_addToHierarchy">addToHierarchy</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_belongsTo">belongsTo</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_binaryInsert">binaryInsert</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_deepSearchArray">deepSearchArray</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_diff">diff</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getArrayFromRange">getArrayFromRange</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getEmberId">getEmberId</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getOffset">getOffset</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_hashHasKeys">hashHasKeys</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_hasMany">hasMany</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_hasManyWithHierarchy">hasManyWithHierarchy</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_merge">merge</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_registerHierarchy">registerHierarchy</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                    </ul>
+                </div>
+
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_addToHierarchy" class="method item">
+    <h3 class="name"><code>addToHierarchy</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>hierarchy</code>
+                </li>
+                <li class="arg">
+                        <code>type</code>
+                </li>
+                <li class="arg">
+                        <code>classObj</code>
+                </li>
+                <li class="arg">
+                        <code>level</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_hierarchy_addToHierarchy.js.html#l1"><code>addon&#x2F;hierarchy&#x2F;addToHierarchy.js:1</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Add an entry to the hierarchy. It takes care of updating meta also.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">hierarchy</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">type</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">classObj</code>
+                        <span class="type">Class</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">level</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_belongsTo" class="method item">
+    <h3 class="name"><code>belongsTo</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>modelClass</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[modelClassKey]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[defaultKey]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[mixin]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[mixinKey]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[defaultMixin]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[registry]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[idKey]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Instance</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_belongsTo.js.html#l3"><code>addon&#x2F;belongsTo.js:3</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Creates a computed property for an object that when set with native js object will return an instances of a class.</p>
+<p>The class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,
+then the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.
+'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.</p>
+<p>Optionally can create the instance with mixin. A single mixin can be passed or a map of mixins as 4th parameter with key extracted from object using mixinKey (5th parameter) can be passed.
+'defaultMixin' (6th parameter) is used when object[mixinKey] is not present.</p>
+<p>Can pass a 7th argument. A registry of objects. If the object (identified by an idKey) is already present, reference to the object is returned.
+8th argument is the idKey</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">modelClass</code>
+                        <span class="type">Class | Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[modelClassKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[defaultKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[mixin]</code>
+                        <span class="type">Mixin | Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[mixinKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[defaultMixin]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[registry]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[idKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Instance</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_binaryInsert" class="method item">
+    <h3 class="name"><code>binaryInsert</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>a</code>
+                </li>
+                <li class="arg">
+                        <code>e</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[c]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_misc.js.html#l34"><code>addon&#x2F;misc.js:34</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Binary insertion within a sorted array.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">a</code>
+                        <span class="type">Array</span>
+
+
+                    <div class="param-description">
+                        <p>Sorted array to insert in.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">e</code>
+                        <span class="type">Any</span>
+
+
+                    <div class="param-description">
+                        <p>Element to insert.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[c]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Optional comparator to use.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_deepSearchArray" class="method item">
+    <h3 class="name"><code>deepSearchArray</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>d</code>
+                </li>
+                <li class="arg">
+                        <code>e</code>
+                </li>
+                <li class="arg">
+                        <code>k</code>
+                </li>
+                <li class="arg">
+                        <code>ak</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_misc.js.html#l4"><code>addon&#x2F;misc.js:4</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Search in a multi level array.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">d</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>Root object to search from.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">e</code>
+                        <span class="type">Any</span>
+
+
+                    <div class="param-description">
+                        <p>Element to search for.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">k</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Key of the element in the object.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">ak</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Key of the array to dig deep.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>Returns the found object.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_diff" class="method item">
+    <h3 class="name"><code>diff</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>srcObj</code>
+                </li>
+                <li class="arg">
+                        <code>tarObj</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[ignoreKeys]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_diff.js.html#l53"><code>addon&#x2F;diff.js:53</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Return the diff of 2 objects.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">srcObj</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">tarObj</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[ignoreKeys]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>A map of keys to ignore.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getArrayFromRange" class="method item">
+    <h3 class="name"><code>getArrayFromRange</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>l</code>
+                </li>
+                <li class="arg">
+                        <code>h</code>
+                </li>
+                <li class="arg">
+                        <code>s</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_misc.js.html#l87"><code>addon&#x2F;misc.js:87</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Returns an array of integers from a starting number to another number with steps.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">l</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>Starting number.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">h</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>Ending number.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">s</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>Steps.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Array</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getEmberId" class="method item">
+    <h3 class="name"><code>getEmberId</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>obj</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_misc.js.html#l107"><code>addon&#x2F;misc.js:107</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get the ember assigned id to the instance.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">obj</code>
+                        <span class="type">Instance</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">String</span>:
+                    <p>Ember assigned id.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getOffset" class="method item">
+    <h3 class="name"><code>getOffset</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ele</code>
+                </li>
+                <li class="arg">
+                        <code>type</code>
+                </li>
+                <li class="arg">
+                        <code>parentSelector</code>
+                </li>
+                <li class="arg">
+                        <code>Offset.</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_misc.js.html#l120"><code>addon&#x2F;misc.js:120</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Recursively return the offset of an element relative to a parent element.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ele</code>
+                        <span class="type">DOMElement</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">type</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Type of the offset.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">parentSelector</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Selector for the parent.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">Offset.</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_hashHasKeys" class="method item">
+    <h3 class="name"><code>hashHasKeys</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>hash</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_misc.js.html#l70"><code>addon&#x2F;misc.js:70</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Checks if an object has any key.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">hash</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>Object to check for keys.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Boolean</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_hasMany" class="method item">
+    <h3 class="name"><code>hasMany</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>modelClass</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[modelClassKey]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[defaultKey]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[registry]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[idKey]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Instance</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_hasMany.js.html#l3"><code>addon&#x2F;hasMany.js:3</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Creates a computed property for an array that when set with array of native js object will return an array of instances of a class.</p>
+<p>The class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,
+then the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.
+'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.</p>
+<p>Can pass a 4th argument. A registry of objects. If the object (identified by an idKey) is already present, reference to the object is returned.
+5th argument is the idKey</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">modelClass</code>
+                        <span class="type">Class | Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[modelClassKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[defaultKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[registry]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[idKey]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Instance</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_hasManyWithHierarchy" class="method item">
+    <h3 class="name"><code>hasManyWithHierarchy</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>hasManyHierarchy</code>
+                </li>
+                <li class="arg">
+                        <code>level</code>
+                </li>
+                <li class="arg">
+                        <code>key</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Instance</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_hierarchy_hasManyWithHierarchy.js.html#l16"><code>addon&#x2F;hierarchy&#x2F;hasManyWithHierarchy.js:16</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Creates a computed property which creates a class for every element in the set array based on hierarchy.
+The objects in the array can be of any level at or below the current level. An instance with the basic class is automatically wrapped around the objects at lower level.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">hasManyHierarchy</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>Assumed to be already initialized by calling 'registerHierarchy'.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">level</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>Level of the computed property.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">key</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Key used to get the key used in retrieving the class object in the classes map.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Instance</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_merge" class="method item">
+    <h3 class="name"><code>merge</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>tar</code>
+                </li>
+                <li class="arg">
+                        <code>src</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[replace=false]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_merge.js.html#l7"><code>addon&#x2F;merge.js:7</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Merge a src object to a tar object and return tar.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">tar</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>Target object.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">src</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>Source object.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[replace=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Replace keys if they already existed.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>Returns the target object.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_registerHierarchy" class="method item">
+    <h3 class="name"><code>registerHierarchy</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>hierarchy</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/addon_hierarchy_registerHierarchy.js.html#l16"><code>addon&#x2F;hierarchy&#x2F;registerHierarchy.js:16</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Register a hierarchy. This will setup the meta of the hierarchy.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">hierarchy</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+            </div>
+
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

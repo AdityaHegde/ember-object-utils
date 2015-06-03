@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>addon/objectWithArrayMixin.js - ember-utils-core</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="ember-utils-core" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 1.0.0.</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/EmberUtilsCore.html">EmberUtilsCore</a></li>
+                                <li><a href="../classes/EmberUtilsCore.ObjectWithArrayMixin.html">EmberUtilsCore.ObjectWithArrayMixin</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/ember-utils-core.html">ember-utils-core</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: addon/objectWithArrayMixin.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+import Ember from &#x27;ember&#x27;;
+import misc from &#x27;./misc&#x27;;
+
+/**
+ * A mixin to add observers to array properties.
+ *
+ * @class EmberUtilsCore.ObjectWithArrayMixin
+ * @static
+ */
+export default Ember.Mixin.create({
+  init : function() {
+    this._super();
+    Ember.set(this, &quot;arrayProps&quot;, Ember.A(this.get(&quot;arrayProps&quot;) || []));
+    this.addArrayObserverToProp(&quot;arrayProps&quot;);
+    Ember.set(this, &quot;arrayProps.propKey&quot;, &quot;arrayProps&quot;);
+    this.arrayPropsWasAdded(this.get(&quot;arrayProps&quot;) || Ember.A([]));
+  },
+
+  addBeforeObserverToProp : function(propKey) {
+    Ember.addBeforeObserver(this, propKey, this, &quot;propWillChange&quot;);
+  },
+
+  removeBeforeObserverFromProp : function(propKey) {
+    Ember.removeBeforeObserver(this, propKey, this, &quot;propWillChange&quot;);
+  },
+
+  addObserverToProp : function(propKey) {
+    Ember.addObserver(this, propKey, this, &quot;propDidChange&quot;);
+  },
+
+  removeObserverFromProp : function(propKey) {
+    Ember.removeObserver(this, propKey, this, &quot;propDidChange&quot;);
+  },
+
+  propWillChange : function(obj, key) {
+    this.removeArrayObserverFromProp(key);
+    var prop = this.get(key);
+    if(prop &amp;&amp; prop.objectsAt) {
+      var idxs = misc.getArrayFromRange(0, prop.get(&quot;length&quot;));
+      this[key+&quot;WillBeDeleted&quot;](prop.objectsAt(idxs), idxs, true);
+    }
+  },
+
+  propDidChange : function(obj, key) {
+    this.addArrayObserverToProp(key);
+    var prop = this.get(key);
+    if(prop) {
+      this.propArrayNotifyChange(prop, key);
+    }
+  },
+
+  propArrayNotifyChange : function(prop, key) {
+    if(prop.objectsAt) {
+      var idxs = misc.getArrayFromRange(0, prop.get(&quot;length&quot;));
+      this[key+&quot;WasAdded&quot;](prop.objectsAt(idxs), idxs, true);
+    }
+  },
+
+  addArrayObserverToProp : function(propKey) {
+    var prop = this.get(propKey);
+    if(prop &amp;&amp; prop.addArrayObserver) {
+      prop.set(&quot;propKey&quot;, propKey);
+      prop.addArrayObserver(this, {
+        willChange : this.propArrayWillChange,
+        didChange : this.propArrayDidChange,
+      });
+    }
+  },
+
+  removeArrayObserverFromProp : function(propKey) {
+    var prop = this.get(propKey);
+    if(prop &amp;&amp; prop.removeArrayObserver) {
+      prop.removeArrayObserver(this, {
+        willChange : this.propArrayWillChange,
+        didChange : this.propArrayDidChange,
+      });
+    }
+  },
+
+  propArrayWillChange : function(array, idx, removedCount, addedCount) {
+    if((array.content || array.length) &amp;&amp; array.get(&quot;length&quot;) &gt; 0) {
+      var propKey = array.get(&quot;propKey&quot;), idxs = misc.getArrayFromRange(idx, idx + removedCount);
+      this[propKey+&quot;WillBeDeleted&quot;](array.objectsAt(idxs), idxs);
+    }
+    //for jshint
+    addedCount = 0;
+  },
+  propArrayDidChange : function(array, idx, removedCount, addedCount) {
+    if((array.content || array.length) &amp;&amp; array.get(&quot;length&quot;) &gt; 0) {
+      var propKey = array.get(&quot;propKey&quot;),
+          addedIdxs = Ember.A([]), removedObjs = Ember.A([]),
+          rc = 0;
+      for(var i = idx; i &lt; idx + addedCount; i++) {
+        var obj = array.objectAt(i);
+        if(!this[propKey+&quot;CanAdd&quot;](obj, i)) {
+          removedObjs.push(obj);
+          rc++;
+        }
+        else {
+          addedIdxs.push(i);
+        }
+      }
+      if(addedIdxs.length &gt; 0) {
+        this[propKey+&quot;WasAdded&quot;](array.objectsAt(addedIdxs), addedIdxs);
+      }
+      if(removedObjs.length &gt; 0) {
+        array.removeObjects(removedObjs);
+      }
+    }
+  },
+
+  /**
+   * Method called just before array elements will be deleted. This is a fallback method. A method with name &lt;propKey&gt;WillBeDeleted can be added to handle for &#x27;propKey&#x27; seperately.
+   *
+   * @method propWillBeDeleted
+   * @param {Array} eles The elements that will be deleted.
+   * @param {Array} idxs The indices of the elements that will be deleted.
+   */
+  propWillBeDeleted : function(eles, idxs) {
+    //for jshint
+    eles = idxs = [];
+  },
+  /**
+   * Method called when deciding whether to add an ele or not. This is a fallback method. A method with name &lt;propKey&gt;CanAdd can be added to handle for &#x27;propKey&#x27; seperately.
+   *
+   * @method propCanAdd
+   * @param {Object|Instance} ele The element that can be added or not.
+   * @param {Number} idx The indice of the element that can be added or not.
+   * @returns {Boolean}
+   */
+  propCanAdd : function(ele, idx) {
+    //for jshint
+    ele = idx = [];
+    return true;
+  },
+  /**
+   * Method called after array elements are added. This is a fallback method. A method with name &lt;propKey&gt;WasAdded can be added to handle for &#x27;propKey&#x27; seperately.
+   *
+   * @method propWasAdded
+   * @param {Array} eles The elements that are added.
+   * @param {Array} idxs The indices of the elements that are added.
+   */
+  propWasAdded : function(eles, idxs) {
+    //for jshint
+    eles = idxs = [];
+  },
+
+  /**
+   * List of keys to array properties.
+   *
+   * @property arrayProps
+   * @type Array
+   */
+  arrayProps : null,
+  arrayPropsWillBeDeleted : function(arrayProps) {
+    for(var i = 0; i &lt; arrayProps.length; i++) {
+      this.removeArrayObserverFromProp(arrayProps[i]);
+      this.removeBeforeObserverFromProp(arrayProps[i]);
+      this.removeObserverFromProp(arrayProps[i]);
+    }
+  },
+  arrayPropsCanAdd : function(ele, idx) {
+    //for jshint
+    ele = idx = [];
+    return true;
+  },
+  arrayPropsWasAdded : function(arrayProps) {
+    for(var i = 0; i &lt; arrayProps.length; i++) {
+      this.arrayPropWasAdded(arrayProps[i]);
+    }
+  },
+  arrayPropWasAdded : function(arrayProp) {
+    var prop = this.get(arrayProp);
+    if(!this[arrayProp+&quot;WillBeDeleted&quot;]) {
+      this[arrayProp+&quot;WillBeDeleted&quot;] = this.propWillBeDeleted;
+    }
+    if(!this[arrayProp+&quot;CanAdd&quot;]) {
+      this[arrayProp+&quot;CanAdd&quot;] = this.propCanAdd;
+    }
+    if(!this[arrayProp+&quot;WasAdded&quot;]) {
+      this[arrayProp+&quot;WasAdded&quot;] = this.propWasAdded;
+    }
+    if(!prop) {
+      this.set(arrayProp, Ember.A([]));
+    }
+    else {
+      this.propArrayNotifyChange(prop, arrayProp);
+    }
+    this.addArrayObserverToProp(arrayProp);
+    this.addBeforeObserverToProp(arrayProp);
+    this.addObserverToProp(arrayProp);
+  },
+
+});
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

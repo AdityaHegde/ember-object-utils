@@ -1,0 +1,675 @@
+{
+    "project": {
+        "name": "ember-utils-core",
+        "description": "Utility modules for ember",
+        "version": "1.0.0."
+    },
+    "files": {
+        "addon/hierarchy/addToHierarchy.js": {
+            "name": "addon/hierarchy/addToHierarchy.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/hierarchy/hasManyWithHierarchy.js": {
+            "name": "addon/hierarchy/hasManyWithHierarchy.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/hierarchy/registerHierarchy.js": {
+            "name": "addon/hierarchy/registerHierarchy.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EmberUtilsCore": 1
+            },
+            "namespaces": {}
+        },
+        "addon/belongsTo.js": {
+            "name": "addon/belongsTo.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EmberUtilsCore": 1
+            },
+            "namespaces": {}
+        },
+        "addon/diff.js": {
+            "name": "addon/diff.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EmberUtilsCore": 1
+            },
+            "namespaces": {}
+        },
+        "addon/hasMany.js": {
+            "name": "addon/hasMany.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EmberUtilsCore": 1
+            },
+            "namespaces": {}
+        },
+        "addon/index.js": {
+            "name": "addon/index.js",
+            "modules": {
+                "ember-utils-core": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/merge.js": {
+            "name": "addon/merge.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EmberUtilsCore": 1
+            },
+            "namespaces": {}
+        },
+        "addon/misc.js": {
+            "name": "addon/misc.js",
+            "modules": {},
+            "classes": {},
+            "fors": {
+                "EmberUtilsCore": 1
+            },
+            "namespaces": {}
+        },
+        "addon/objectWithArrayMixin.js": {
+            "name": "addon/objectWithArrayMixin.js",
+            "modules": {},
+            "classes": {
+                "EmberUtilsCore.ObjectWithArrayMixin": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "ember-utils-core": {
+            "name": "ember-utils-core",
+            "submodules": {},
+            "classes": {
+                "EmberUtilsCore": 1,
+                "EmberUtilsCore.ObjectWithArrayMixin": 1
+            },
+            "fors": {
+                "EmberUtilsCore": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "addon/objectWithArrayMixin.js",
+            "line": 4
+        }
+    },
+    "classes": {
+        "EmberUtilsCore": {
+            "name": "EmberUtilsCore",
+            "shortname": "EmberUtilsCore",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ember-utils-core"
+        },
+        "EmberUtilsCore.ObjectWithArrayMixin": {
+            "name": "EmberUtilsCore.ObjectWithArrayMixin",
+            "shortname": "EmberUtilsCore.ObjectWithArrayMixin",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "ember-utils-core",
+            "file": "addon/objectWithArrayMixin.js",
+            "line": 4,
+            "description": "A mixin to add observers to array properties.",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "addon/hierarchy/addToHierarchy.js",
+            "line": 1,
+            "description": "Add an entry to the hierarchy. It takes care of updating meta also.",
+            "itemtype": "method",
+            "name": "addToHierarchy",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hierarchy",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "type",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "classObj",
+                    "description": "",
+                    "type": "Class"
+                },
+                {
+                    "name": "level",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "EmberUtilsCore"
+        },
+        {
+            "file": "addon/hierarchy/hasManyWithHierarchy.js",
+            "line": 16,
+            "description": "Creates a computed property which creates a class for every element in the set array based on hierarchy.\nThe objects in the array can be of any level at or below the current level. An instance with the basic class is automatically wrapped around the objects at lower level.",
+            "itemtype": "method",
+            "name": "hasManyWithHierarchy",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hasManyHierarchy",
+                    "description": "Assumed to be already initialized by calling 'registerHierarchy'.",
+                    "type": "Object"
+                },
+                {
+                    "name": "level",
+                    "description": "Level of the computed property.",
+                    "type": "Number"
+                },
+                {
+                    "name": "key",
+                    "description": "Key used to get the key used in retrieving the class object in the classes map.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Instance"
+            },
+            "class": "EmberUtilsCore"
+        },
+        {
+            "file": "addon/hierarchy/registerHierarchy.js",
+            "line": 16,
+            "description": "Register a hierarchy. This will setup the meta of the hierarchy.",
+            "itemtype": "method",
+            "name": "registerHierarchy",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hierarchy",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "EmberUtilsCore"
+        },
+        {
+            "file": "addon/belongsTo.js",
+            "line": 3,
+            "description": "Creates a computed property for an object that when set with native js object will return an instances of a class.\n\nThe class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,\nthen the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.\n'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.\n\nOptionally can create the instance with mixin. A single mixin can be passed or a map of mixins as 4th parameter with key extracted from object using mixinKey (5th parameter) can be passed.\n'defaultMixin' (6th parameter) is used when object[mixinKey] is not present.\n\nCan pass a 7th argument. A registry of objects. If the object (identified by an idKey) is already present, reference to the object is returned.\n8th argument is the idKey",
+            "itemtype": "method",
+            "name": "belongsTo",
+            "static": 1,
+            "params": [
+                {
+                    "name": "modelClass",
+                    "description": "",
+                    "type": "Class|Object"
+                },
+                {
+                    "name": "modelClassKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "defaultKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "mixin",
+                    "description": "",
+                    "type": "Mixin|Object",
+                    "optional": true
+                },
+                {
+                    "name": "mixinKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "defaultMixin",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "registry",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "idKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Instance"
+            },
+            "class": "EmberUtilsCore"
+        },
+        {
+            "file": "addon/diff.js",
+            "line": 53,
+            "description": "Return the diff of 2 objects.",
+            "itemtype": "method",
+            "name": "diff",
+            "static": 1,
+            "params": [
+                {
+                    "name": "srcObj",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "tarObj",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "ignoreKeys",
+                    "description": "A map of keys to ignore.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "EmberUtilsCore"
+        },
+        {
+            "file": "addon/hasMany.js",
+            "line": 3,
+            "description": "Creates a computed property for an array that when set with array of native js object will return an array of instances of a class.\n\nThe class is decided by the 1st param 'modelClass'. If it is not a class but an object and 'modelClassKey', the 2nd parameter is a string,\nthen the 'modelClassKey' in the object is used as a key in 'modelClass' the object to get the class.\n'defaultKey' the 3rd parameter is used as a default if object[modelClassKey] is not present.\n\nCan pass a 4th argument. A registry of objects. If the object (identified by an idKey) is already present, reference to the object is returned.\n5th argument is the idKey",
+            "itemtype": "method",
+            "name": "hasMany",
+            "static": 1,
+            "params": [
+                {
+                    "name": "modelClass",
+                    "description": "",
+                    "type": "Class|Object"
+                },
+                {
+                    "name": "modelClassKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "defaultKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "registry",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "idKey",
+                    "description": "",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Instance"
+            },
+            "class": "EmberUtilsCore"
+        },
+        {
+            "file": "addon/merge.js",
+            "line": 7,
+            "description": "Merge a src object to a tar object and return tar.",
+            "itemtype": "method",
+            "name": "merge",
+            "static": 1,
+            "params": [
+                {
+                    "name": "tar",
+                    "description": "Target object.",
+                    "type": "Object"
+                },
+                {
+                    "name": "src",
+                    "description": "Source object.",
+                    "type": "Object"
+                },
+                {
+                    "name": "replace",
+                    "description": "Replace keys if they already existed.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns the target object.",
+                "type": "Object"
+            },
+            "class": "EmberUtilsCore",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/misc.js",
+            "line": 4,
+            "description": "Search in a multi level array.",
+            "itemtype": "method",
+            "name": "deepSearchArray",
+            "static": 1,
+            "params": [
+                {
+                    "name": "d",
+                    "description": "Root object to search from.",
+                    "type": "Object"
+                },
+                {
+                    "name": "e",
+                    "description": "Element to search for.",
+                    "type": "Any"
+                },
+                {
+                    "name": "k",
+                    "description": "Key of the element in the object.",
+                    "type": "String"
+                },
+                {
+                    "name": "ak",
+                    "description": "Key of the array to dig deep.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns the found object.",
+                "type": "Object"
+            },
+            "class": "EmberUtilsCore",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/misc.js",
+            "line": 34,
+            "description": "Binary insertion within a sorted array.",
+            "itemtype": "method",
+            "name": "binaryInsert",
+            "static": 1,
+            "params": [
+                {
+                    "name": "a",
+                    "description": "Sorted array to insert in.",
+                    "type": "Array"
+                },
+                {
+                    "name": "e",
+                    "description": "Element to insert.",
+                    "type": "Any"
+                },
+                {
+                    "name": "c",
+                    "description": "Optional comparator to use.",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "EmberUtilsCore",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/misc.js",
+            "line": 70,
+            "description": "Checks if an object has any key.",
+            "itemtype": "method",
+            "name": "hashHasKeys",
+            "static": 1,
+            "params": [
+                {
+                    "name": "hash",
+                    "description": "Object to check for keys.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "EmberUtilsCore",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/misc.js",
+            "line": 87,
+            "description": "Returns an array of integers from a starting number to another number with steps.",
+            "itemtype": "method",
+            "name": "getArrayFromRange",
+            "static": 1,
+            "params": [
+                {
+                    "name": "l",
+                    "description": "Starting number.",
+                    "type": "Number"
+                },
+                {
+                    "name": "h",
+                    "description": "Ending number.",
+                    "type": "Number"
+                },
+                {
+                    "name": "s",
+                    "description": "Steps.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "EmberUtilsCore",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/misc.js",
+            "line": 107,
+            "description": "Get the ember assigned id to the instance.",
+            "itemtype": "method",
+            "name": "getEmberId",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Instance"
+                }
+            ],
+            "return": {
+                "description": "Ember assigned id.",
+                "type": "String"
+            },
+            "class": "EmberUtilsCore",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/misc.js",
+            "line": 120,
+            "description": "Recursively return the offset of an element relative to a parent element.",
+            "itemtype": "method",
+            "name": "getOffset",
+            "static": 1,
+            "params": [
+                {
+                    "name": "ele",
+                    "description": "",
+                    "type": "DOMElement"
+                },
+                {
+                    "name": "type",
+                    "description": "Type of the offset.",
+                    "type": "String"
+                },
+                {
+                    "name": "parentSelector",
+                    "description": "Selector for the parent.",
+                    "type": "String"
+                },
+                {
+                    "name": "Offset.",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "EmberUtilsCore",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/objectWithArrayMixin.js",
+            "line": 112,
+            "description": "Method called just before array elements will be deleted. This is a fallback method. A method with name <propKey>WillBeDeleted can be added to handle for 'propKey' seperately.",
+            "itemtype": "method",
+            "name": "propWillBeDeleted",
+            "params": [
+                {
+                    "name": "eles",
+                    "description": "The elements that will be deleted.",
+                    "type": "Array"
+                },
+                {
+                    "name": "idxs",
+                    "description": "The indices of the elements that will be deleted.",
+                    "type": "Array"
+                }
+            ],
+            "class": "EmberUtilsCore.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/objectWithArrayMixin.js",
+            "line": 123,
+            "description": "Method called when deciding whether to add an ele or not. This is a fallback method. A method with name <propKey>CanAdd can be added to handle for 'propKey' seperately.",
+            "itemtype": "method",
+            "name": "propCanAdd",
+            "params": [
+                {
+                    "name": "ele",
+                    "description": "The element that can be added or not.",
+                    "type": "Object|Instance"
+                },
+                {
+                    "name": "idx",
+                    "description": "The indice of the element that can be added or not.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "EmberUtilsCore.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/objectWithArrayMixin.js",
+            "line": 136,
+            "description": "Method called after array elements are added. This is a fallback method. A method with name <propKey>WasAdded can be added to handle for 'propKey' seperately.",
+            "itemtype": "method",
+            "name": "propWasAdded",
+            "params": [
+                {
+                    "name": "eles",
+                    "description": "The elements that are added.",
+                    "type": "Array"
+                },
+                {
+                    "name": "idxs",
+                    "description": "The indices of the elements that are added.",
+                    "type": "Array"
+                }
+            ],
+            "class": "EmberUtilsCore.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        },
+        {
+            "file": "addon/objectWithArrayMixin.js",
+            "line": 148,
+            "description": "List of keys to array properties.",
+            "itemtype": "property",
+            "name": "arrayProps",
+            "type": "Array",
+            "class": "EmberUtilsCore.ObjectWithArrayMixin",
+            "module": "ember-utils-core"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/hierarchy/hasManyWithHierarchy.js:16"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/belongsTo.js:3"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/diff.js:53"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/hasMany.js:3"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/merge.js:7"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/misc.js:4"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/misc.js:70"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/misc.js:87"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/misc.js:107"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " addon/objectWithArrayMixin.js:123"
+        }
+    ]
+}
