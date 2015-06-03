@@ -1,7 +1,7 @@
 {
-  "name": "ember-utils-core",
+  "name": "ember-object-utils",
   "version": "1.0.0",
-  "description": "Utility modules for ember",
+  "description": "Object utils for Ember",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "ember server",
     "build": "ember build",
-    "test": "ember try:testall"
+    "test": "ember test"
   },
   "repository": "",
   "engines": {

@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-utils-core'
+  name: 'ember-object-utils'
 };

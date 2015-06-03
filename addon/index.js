@@ -1,5 +1,5 @@
 /**
- * @module ember-utils-core
+ * @module ember-object-utils
  */
 
 import Ember                from "ember";
@@ -9,19 +9,19 @@ import hierarchy            from "./hierarchy/index";
 import objectWithArrayMixin from "./objectWithArrayMixin";
 
 var
-EmberUtilsCore = Ember.Namespace.create(),
+EmberObjectUtils = Ember.Namespace.create(),
 modules = [hierarchy];
 
 for(var i = 0; i < modules.length; i++) {
   for(var k in modules[i]) {
     if(modules[i].hasOwnProperty(k)) {
-      EmberUtilsCore[k] = modules[i][k];
+      EmberObjectUtils[k] = modules[i][k];
     }
   }
 }
 
-EmberUtilsCore.hasMany = hasMany;
-EmberUtilsCore.belongsTo = belongsTo;
-EmberUtilsCore.ObjectWithArrayMixin = objectWithArrayMixin;
+EmberObjectUtils.hasMany = hasMany;
+EmberObjectUtils.belongsTo = belongsTo;
+EmberObjectUtils.ObjectWithArrayMixin = objectWithArrayMixin;
 
-export default EmberUtilsCore;
+export default EmberObjectUtils;

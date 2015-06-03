@@ -17,7 +17,7 @@ function getMetaFromHierarchy(hasManyHierarchy) {
  * Register a hierarchy. This will setup the meta of the hierarchy.
  *
  * @method registerHierarchy
- * @for EmberUtilsCore
+ * @for EmberObjectUtils
  * @static
  * @param {Object} hierarchy
  */

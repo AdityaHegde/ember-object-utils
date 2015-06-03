@@ -1,18 +1,18 @@
 import Ember from "ember";
-import EmberUtilsCore from "ember-utils-core";
+import EmberObjectUtils from "ember-object-utils";
 import { module, test } from "qunit";
 
-module("EmberUtilsCore.hasMany");
+module("EmberObjectUtils.hasMany");
 
-test("Simple EmberUtilsCore.hasMany", function(assert) {
+test("Simple EmberObjectUtils.hasMany", function(assert) {
   var 
   classChild = Ember.Object.extend({
     vara : "child1",
   }),
   classObj = Ember.Object.extend({
-    arr1 : EmberUtilsCore.hasMany(),
-    arr2 : EmberUtilsCore.hasMany(classChild),
-    arr3 : EmberUtilsCore.hasMany("Ember.ClassChild"),
+    arr1 : EmberObjectUtils.hasMany(),
+    arr2 : EmberObjectUtils.hasMany(classChild),
+    arr3 : EmberObjectUtils.hasMany("Ember.ClassChild"),
   });
   Ember.ClassChild = Ember.Object.extend({
     vara : "child2",
@@ -44,7 +44,7 @@ test("Simple EmberUtilsCore.hasMany", function(assert) {
   assert.ok(rightValues);
 });
 
-test("EmberUtilsCore.hasMany with map", function(assert) {
+test("EmberObjectUtils.hasMany with map", function(assert) {
   var 
   classChild1 = Ember.Object.extend({
     vara : "child1",
@@ -61,8 +61,8 @@ test("EmberUtilsCore.hasMany with map", function(assert) {
     "c3" : classChild3,
   },
   classObj = Ember.Object.extend({
-    arr1 : EmberUtilsCore.hasMany(map, "varb", "c1"),
-    arr2 : EmberUtilsCore.hasMany("Ember.HasManyMap", "varb", "c1"),
+    arr1 : EmberObjectUtils.hasMany(map, "varb", "c1"),
+    arr2 : EmberObjectUtils.hasMany("Ember.HasManyMap", "varb", "c1"),
   });
   var classes = [classChild1, classChild2, classChild3];
   Ember.HasManyMap = {

@@ -1,19 +1,19 @@
 import Ember from "ember";
-import EmberUtilsCore from "ember-utils-core";
+import EmberObjectUtils from "ember-object-utils";
 import { module, test } from "qunit";
 
-module("EmberUtilsCore.belongsTo");
+module("EmberObjectUtils.belongsTo");
 
-test("Simple EmberUtilsCore.belongsTo", function(assert) {
+test("Simple EmberObjectUtils.belongsTo", function(assert) {
   var 
   classChild = Ember.Object.extend({
     vara : "child1",
   }),
   classObj = Ember.Object.extend({
-    obj0 : EmberUtilsCore.belongsTo(),
-    obj1 : EmberUtilsCore.belongsTo(classChild),
-    obj2 : EmberUtilsCore.belongsTo("Ember.ClassChild"),
-    obj3 : EmberUtilsCore.belongsTo(),
+    obj0 : EmberObjectUtils.belongsTo(),
+    obj1 : EmberObjectUtils.belongsTo(classChild),
+    obj2 : EmberObjectUtils.belongsTo("Ember.ClassChild"),
+    obj3 : EmberObjectUtils.belongsTo(),
   });
   Ember.ClassChild = Ember.Object.extend({
     vara : "child2",
@@ -43,7 +43,7 @@ test("Simple EmberUtilsCore.belongsTo", function(assert) {
   assert.ok(rightValues);
 });
 
-test("EmberUtilsCore.belongsTo with map", function(assert) {
+test("EmberObjectUtils.belongsTo with map", function(assert) {
   var 
   classChild1 = Ember.Object.extend({
     vara : "child1",
@@ -60,14 +60,14 @@ test("EmberUtilsCore.belongsTo with map", function(assert) {
     "c3" : classChild3,
   },
   classObj = Ember.Object.extend({
-    obj00 : EmberUtilsCore.belongsTo(map, "varb", "c1"),
-    obj01 : EmberUtilsCore.belongsTo(map, "varb", "c1"),
-    obj02 : EmberUtilsCore.belongsTo(map, "varb", "c1"),
-    obj03 : EmberUtilsCore.belongsTo(map, "varb", "c1"),
-    obj10 : EmberUtilsCore.belongsTo("Ember.BelongsToMap", "varb", "c1"),
-    obj11 : EmberUtilsCore.belongsTo("Ember.BelongsToMap", "varb", "c1"),
-    obj12 : EmberUtilsCore.belongsTo("Ember.BelongsToMap", "varb", "c1"),
-    obj13 : EmberUtilsCore.belongsTo("Ember.BelongsToMap", "varb", "c1"),
+    obj00 : EmberObjectUtils.belongsTo(map, "varb", "c1"),
+    obj01 : EmberObjectUtils.belongsTo(map, "varb", "c1"),
+    obj02 : EmberObjectUtils.belongsTo(map, "varb", "c1"),
+    obj03 : EmberObjectUtils.belongsTo(map, "varb", "c1"),
+    obj10 : EmberObjectUtils.belongsTo("Ember.BelongsToMap", "varb", "c1"),
+    obj11 : EmberObjectUtils.belongsTo("Ember.BelongsToMap", "varb", "c1"),
+    obj12 : EmberObjectUtils.belongsTo("Ember.BelongsToMap", "varb", "c1"),
+    obj13 : EmberObjectUtils.belongsTo("Ember.BelongsToMap", "varb", "c1"),
   });
   var classes = [classChild1, classChild2, classChild3];
   Ember.BelongsToMap = {

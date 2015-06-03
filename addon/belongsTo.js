@@ -14,7 +14,7 @@ import Ember from 'ember';
  * 8th argument is the idKey
  *
  * @method belongsTo
- * @for EmberUtilsCore
+ * @for EmberObjectUtils
  * @static
  * @param {Class|Object} modelClass
  * @param {String} [modelClassKey]

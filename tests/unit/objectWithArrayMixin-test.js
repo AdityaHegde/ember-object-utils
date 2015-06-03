@@ -1,8 +1,8 @@
 import Ember from "ember";
-import EmberUtilsCore from "ember-utils-core";
+import EmberObjectUtils from "ember-object-utils";
 import { module, test } from "qunit";
 
-module("EmberUtilsCore.objectWithArrayMixin");
+module("EmberObjectUtils.objectWithArrayMixin");
 
 /* jshint ignore:start */
 function setupObjectWithArrayMixin() {
@@ -12,7 +12,7 @@ function setupObjectWithArrayMixin() {
     canAddEle : null, canAddIdx : null, canAddSpecific : null,
     addedEles : null, addedIdxs : null, addedSpecific : null,
   },
-  classObj = Ember.Object.extend(EmberUtilsCore.ObjectWithArrayMixin, {
+  classObj = Ember.Object.extend(EmberObjectUtils.ObjectWithArrayMixin, {
     arrayProps : ["var0", "var1", "var2", "var3"],
     var0 : null,
     var1 : null,

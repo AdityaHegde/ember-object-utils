@@ -1,6 +1,6 @@
 # Ember-utils-core
 
-Docs : http://adityahegde.github.io/ember-utils-core/
+Docs : http://adityahegde.github.io/ember-object-utils/
 
 ## Installation
 

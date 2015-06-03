@@ -1,6 +1,6 @@
 {
-  "name": "ember-utils-core",
-  "description": "Utility modules for ember",
+  "name": "ember-object-utils",
+  "description": "Object utilities for Ember",
   "version": "1.0.0",
   "options": {
     "paths": [

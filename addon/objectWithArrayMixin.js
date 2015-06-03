@@ -22,7 +22,7 @@ function getArrayFromRange(l, h, s) {
 /**
  * A mixin to add observers to array properties.
  *
- * @class EmberUtilsCore.ObjectWithArrayMixin
+ * @class EmberObjectUtils.ObjectWithArrayMixin
  * @static
  */
 export default Ember.Mixin.create({
