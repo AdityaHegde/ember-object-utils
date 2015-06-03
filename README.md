@@ -1,6 +1,6 @@
 # Ember-utils-core
 
-This README outlines the details of collaborating on this Ember addon.
+Docs : http://adityahegde.github.io/ember-utils-core/
 
 ## Installation
 
