@@ -1,0 +1,12 @@
+{
+  "name": "ember-utils-core",
+  "description": "Utility modules for ember",
+  "version": "1.0.0",
+  "options": {
+    "paths": [
+      "addon"
+    ],
+    "exclude": "vendor",
+    "outdir": "docs"
+  }
+}

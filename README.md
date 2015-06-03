@@ -1,4 +1,25 @@
-ember-utils-core  [![Build Status](https://travis-ci.org/AdityaHegde/ember-utils-core.svg)](https://travis-ci.org/AdityaHegde/ember-utils-core) [![Coverage Status](https://coveralls.io/repos/AdityaHegde/ember-utils-core/badge.svg?branch=master)](https://coveralls.io/r/AdityaHegde/ember-utils-core?branch=master)
-===========
+# Ember-utils-core
 
-Core utils module for ember
+This README outlines the details of collaborating on this Ember addon.
+
+## Installation
+
+* `git clone` this repository
+* `npm install`
+* `bower install`
+
+## Running
+
+* `ember server`
+* Visit your app at http://localhost:4200.
+
+## Running Tests
+
+* `ember test`
+* `ember test --server`
+
+## Building
+
+* `ember build`
+
+For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
