@@ -1,16 +1,16 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "EmberUtilsCore",
-        "EmberUtilsCore.ObjectWithArrayMixin"
+        "EmberObjectUtils",
+        "EmberObjectUtils.ObjectWithArrayMixin"
     ],
     "modules": [
-        "ember-utils-core"
+        "ember-object-utils"
     ],
     "allModules": [
         {
-            "displayName": "ember-utils-core",
-            "name": "ember-utils-core"
+            "displayName": "ember-object-utils",
+            "name": "ember-object-utils"
         }
     ]
 } };

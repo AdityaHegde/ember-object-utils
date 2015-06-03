@@ -1,8 +1,8 @@
 {
     "project": {
-        "name": "ember-utils-core",
-        "description": "Utility modules for ember",
-        "version": "1.0.0.14108463"
+        "name": "ember-object-utils",
+        "description": "Object utilities for Ember",
+        "version": "1.0.0.6ab0d507"
     },
     "files": {
         "addon/hierarchy/addToHierarchy.js": {
@@ -24,7 +24,7 @@
             "modules": {},
             "classes": {},
             "fors": {
-                "EmberUtilsCore": 1
+                "EmberObjectUtils": 1
             },
             "namespaces": {}
         },
@@ -33,7 +33,7 @@
             "modules": {},
             "classes": {},
             "fors": {
-                "EmberUtilsCore": 1
+                "EmberObjectUtils": 1
             },
             "namespaces": {}
         },
@@ -42,14 +42,14 @@
             "modules": {},
             "classes": {},
             "fors": {
-                "EmberUtilsCore": 1
+                "EmberObjectUtils": 1
             },
             "namespaces": {}
         },
         "addon/index.js": {
             "name": "addon/index.js",
             "modules": {
-                "ember-utils-core": 1
+                "ember-object-utils": 1
             },
             "classes": {},
             "fors": {},
@@ -59,19 +59,19 @@
             "name": "addon/objectWithArrayMixin.js",
             "modules": {},
             "classes": {
-                "EmberUtilsCore.ObjectWithArrayMixin": 1
+                "EmberObjectUtils.ObjectWithArrayMixin": 1
             },
             "fors": {},
             "namespaces": {}
         }
     },
     "modules": {
-        "ember-utils-core": {
-            "name": "ember-utils-core",
+        "ember-object-utils": {
+            "name": "ember-object-utils",
             "submodules": {},
             "classes": {
-                "EmberUtilsCore": 1,
-                "EmberUtilsCore.ObjectWithArrayMixin": 1
+                "EmberObjectUtils": 1,
+                "EmberObjectUtils.ObjectWithArrayMixin": 1
             },
             "fors": {},
             "namespaces": {},
@@ -81,25 +81,25 @@
         }
     },
     "classes": {
-        "EmberUtilsCore": {
-            "name": "EmberUtilsCore",
-            "shortname": "EmberUtilsCore",
+        "EmberObjectUtils": {
+            "name": "EmberObjectUtils",
+            "shortname": "EmberObjectUtils",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ember-utils-core"
+            "module": "ember-object-utils"
         },
-        "EmberUtilsCore.ObjectWithArrayMixin": {
-            "name": "EmberUtilsCore.ObjectWithArrayMixin",
-            "shortname": "EmberUtilsCore.ObjectWithArrayMixin",
+        "EmberObjectUtils.ObjectWithArrayMixin": {
+            "name": "EmberObjectUtils.ObjectWithArrayMixin",
+            "shortname": "EmberObjectUtils.ObjectWithArrayMixin",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "ember-utils-core",
+            "module": "ember-object-utils",
             "namespace": "",
             "file": "addon/objectWithArrayMixin.js",
             "line": 22,
@@ -137,7 +137,7 @@
                     "type": "Number"
                 }
             ],
-            "class": "EmberUtilsCore"
+            "class": "EmberObjectUtils"
         },
         {
             "file": "addon/hierarchy/hasManyWithHierarchy.js",
@@ -167,7 +167,7 @@
                 "description": "",
                 "type": "Instance"
             },
-            "class": "EmberUtilsCore"
+            "class": "EmberObjectUtils"
         },
         {
             "file": "addon/hierarchy/registerHierarchy.js",
@@ -183,7 +183,7 @@
                     "type": "Object"
                 }
             ],
-            "class": "EmberUtilsCore"
+            "class": "EmberObjectUtils"
         },
         {
             "file": "addon/belongsTo.js",
@@ -245,7 +245,7 @@
                 "description": "",
                 "type": "Instance"
             },
-            "class": "EmberUtilsCore"
+            "class": "EmberObjectUtils"
         },
         {
             "file": "addon/hasMany.js",
@@ -289,7 +289,7 @@
                 "description": "",
                 "type": "Instance"
             },
-            "class": "EmberUtilsCore"
+            "class": "EmberObjectUtils"
         },
         {
             "file": "addon/objectWithArrayMixin.js",
@@ -319,8 +319,8 @@
                 "description": "",
                 "type": "Array"
             },
-            "class": "EmberUtilsCore.ObjectWithArrayMixin",
-            "module": "ember-utils-core"
+            "class": "EmberObjectUtils.ObjectWithArrayMixin",
+            "module": "ember-object-utils"
         },
         {
             "file": "addon/objectWithArrayMixin.js",
@@ -340,8 +340,8 @@
                     "type": "Array"
                 }
             ],
-            "class": "EmberUtilsCore.ObjectWithArrayMixin",
-            "module": "ember-utils-core"
+            "class": "EmberObjectUtils.ObjectWithArrayMixin",
+            "module": "ember-object-utils"
         },
         {
             "file": "addon/objectWithArrayMixin.js",
@@ -365,8 +365,8 @@
                 "description": "",
                 "type": "Boolean"
             },
-            "class": "EmberUtilsCore.ObjectWithArrayMixin",
-            "module": "ember-utils-core"
+            "class": "EmberObjectUtils.ObjectWithArrayMixin",
+            "module": "ember-object-utils"
         },
         {
             "file": "addon/objectWithArrayMixin.js",
@@ -386,8 +386,8 @@
                     "type": "Array"
                 }
             ],
-            "class": "EmberUtilsCore.ObjectWithArrayMixin",
-            "module": "ember-utils-core"
+            "class": "EmberObjectUtils.ObjectWithArrayMixin",
+            "module": "ember-object-utils"
         },
         {
             "file": "addon/objectWithArrayMixin.js",
@@ -396,8 +396,8 @@
             "itemtype": "property",
             "name": "arrayProps",
             "type": "Array",
-            "class": "EmberUtilsCore.ObjectWithArrayMixin",
-            "module": "ember-utils-core"
+            "class": "EmberObjectUtils.ObjectWithArrayMixin",
+            "module": "ember-object-utils"
         }
     ],
     "warnings": [
