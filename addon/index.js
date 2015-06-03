@@ -7,12 +7,10 @@ import hasMany              from "./hasMany";
 import belongsTo            from "./belongsTo";
 import hierarchy            from "./hierarchy/index";
 import objectWithArrayMixin from "./objectWithArrayMixin";
-import misc                 from "./misc";
-import merge                from "./merge";
 
 var
 EmberUtilsCore = Ember.Namespace.create(),
-modules = [hierarchy, misc];
+modules = [hierarchy];
 
 for(var i = 0; i < modules.length; i++) {
   for(var k in modules[i]) {
@@ -25,6 +23,5 @@ for(var i = 0; i < modules.length; i++) {
 EmberUtilsCore.hasMany = hasMany;
 EmberUtilsCore.belongsTo = belongsTo;
 EmberUtilsCore.ObjectWithArrayMixin = objectWithArrayMixin;
-EmberUtilsCore.merge = merge;
 
 export default EmberUtilsCore;

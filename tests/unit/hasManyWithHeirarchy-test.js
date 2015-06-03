@@ -2,6 +2,35 @@ import Ember from "ember";
 import EmberUtilsCore from "ember-utils-core";
 import { module, test } from "qunit";
 
+function getOffset(ele, type, parentSelector) {
+  parentSelector = parentSelector || "body";
+  if(!Ember.isEmpty($(ele).filter(parentSelector))) {
+    return 0;
+  }
+  return ele["offset"+type] + getOffset(ele.offsetParent, type, parentSelector);
+}
+
+function emberDeepEqual(src, tar) {
+  for(var k in tar) {
+    var kObj = src.get(k);
+    if(Ember.typeOf(tar[k]) === "object" || Ember.typeOf(tar[k]) === "instance") {
+      return emberDeepEqual(kObj, tar[k]);
+    }
+    else if(Ember.typeOf(tar[k]) === "array") {
+      for(var i = 0; i < tar[k].length; i++) {
+        if(!emberDeepEqual(kObj.objectAt(i), tar[k][i])) {
+          return false;
+        }
+      }
+    }
+    else if(tar[k] !== kObj) {
+      console.log(kObj + " not equal to " + tar[k] + " for key : " + k);
+      return false;
+    }
+  }
+  return true;
+}
+
 module("EmberUtilsCore.hasManyWithHierarchy");
 
 test("2 Levels of hierarchy", function(assert) {
@@ -157,7 +186,7 @@ test("2 Levels of hierarchy", function(assert) {
     var c = objClass.create({
       children : assertions[i].input,
     });
-    assert.ok(EmberUtilsCore.emberDeepEqual( c.get("children"), assertions[i].output ));
+    assert.ok(emberDeepEqual( c.get("children"), assertions[i].output ));
   }
 });
 
@@ -260,7 +289,7 @@ test("3 Levels of hierarchy", function(assert) {
     var c = objClass.create({
       children : assertions[i].input,
     });
-    assert.ok(EmberUtilsCore.emberDeepEqual( c.get("children"), assertions[i].output ));
+    assert.ok(emberDeepEqual( c.get("children"), assertions[i].output ));
   }
 });
 
@@ -337,6 +366,6 @@ test("EmberUtilsCore.addToHierarchy", function(assert) {
     var c = objClass.create({
       children : assertions[i].input.create,
     });
-    assert.ok(EmberUtilsCore.emberDeepEqual( c.get("children"), assertions[i].output ));
+    assert.ok(emberDeepEqual( c.get("children"), assertions[i].output ));
   }
 });

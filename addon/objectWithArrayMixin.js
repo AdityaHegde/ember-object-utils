@@ -1,5 +1,23 @@
 import Ember from 'ember';
-import misc from './misc';
+
+/**
+ * Returns an array of integers from a starting number to another number with steps.
+ *
+ * @method getArrayFromRange
+ * @static
+ * @param {Number} l Starting number.
+ * @param {Number} h Ending number.
+ * @param {Number} s Steps.
+ * @returns {Array}
+ */
+function getArrayFromRange(l, h, s) {
+  var a = [];
+  s = s || 1;
+  for(var i = l; i < h; i += s) {
+    a.push(i);
+  }
+  return a;
+}
 
 /**
  * A mixin to add observers to array properties.
@@ -36,7 +54,7 @@ export default Ember.Mixin.create({
     this.removeArrayObserverFromProp(key);
     var prop = this.get(key);
     if(prop && prop.objectsAt) {
-      var idxs = misc.getArrayFromRange(0, prop.get("length"));
+      var idxs = getArrayFromRange(0, prop.get("length"));
       this[key+"WillBeDeleted"](prop.objectsAt(idxs), idxs, true);
     }
   },
@@ -51,7 +69,7 @@ export default Ember.Mixin.create({
 
   propArrayNotifyChange : function(prop, key) {
     if(prop.objectsAt) {
-      var idxs = misc.getArrayFromRange(0, prop.get("length"));
+      var idxs = getArrayFromRange(0, prop.get("length"));
       this[key+"WasAdded"](prop.objectsAt(idxs), idxs, true);
     }
   },
@@ -79,7 +97,7 @@ export default Ember.Mixin.create({
 
   propArrayWillChange : function(array, idx, removedCount, addedCount) {
     if((array.content || array.length) && array.get("length") > 0) {
-      var propKey = array.get("propKey"), idxs = misc.getArrayFromRange(idx, idx + removedCount);
+      var propKey = array.get("propKey"), idxs = getArrayFromRange(idx, idx + removedCount);
       this[propKey+"WillBeDeleted"](array.objectsAt(idxs), idxs);
     }
     //for jshint
