@@ -12,10 +12,10 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 */
 
 var app = new EmberAddon({
-  minifyJS : {
+  /*minifyJS : {
     enabled : true,
   },
-  /*sourcemaps : {
+  sourcemaps : {
     enabled : false,
   },*/
 });

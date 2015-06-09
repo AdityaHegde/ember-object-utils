@@ -29,15 +29,14 @@ export default function hasManyWithHierarchy(hasManyHierarchy, level, hkey) {
   if(Ember.typeOf(hasManyHierarchy) === "array") {
     meta = hasManyHierarchy.hierarchyMeta;
   }
-  return Ember.computed(function(key, newval) {
-    if(arguments.length > 1) {
+  return Ember.computed({
+    set : function(key, newval) {
       if(Ember.typeOf(hasManyHierarchy) === "string") {
         hasManyHierarchy = Ember.get(hasManyHierarchy);
         meta = hasManyHierarchy.hierarchyMeta;
       }
       if(newval) {
-        //curLevel, curLevelArray
-        var cl = -1, cla = Ember.A([]);
+        var curLevel = -1, curLevelArray = Ember.A([]);
         for(var i = 0; i < newval.length; i++) {
           var obj = newval[i], _obj = {},
               type = Ember.typeOf(obj) === "array" ? obj[0] : obj[hkey],
@@ -55,36 +54,33 @@ export default function hasManyWithHierarchy(hasManyHierarchy, level, hkey) {
                 _obj = obj;
               }
               _obj = hasManyHierarchy[objMeta.level].classes[type].create(_obj);
-              if(cl === -1 || cl === objMeta.level) {
-                cla.push(_obj);
-                cl = objMeta.level;
+              if(curLevel === -1 || curLevel === objMeta.level) {
+                curLevelArray.push(_obj);
+                curLevel = objMeta.level;
               }
-              else if(cl < objMeta.level) {
-                cla.push(getObjTillLevel(_obj, meta, hasManyHierarchy, objMeta.level, cl));
+              else if(curLevel < objMeta.level) {
+                curLevelArray.push(getObjTillLevel(_obj, meta, hasManyHierarchy, objMeta.level, curLevel));
               }
               else {
-                var curObj = getObjForHierarchyLevel(cla, meta, hasManyHierarchy, objMeta.level);
-                cl = objMeta.level;
-                cla = Ember.A([curObj, _obj]);
+                var curObj = getObjForHierarchyLevel(curLevelArray, meta, hasManyHierarchy, objMeta.level);
+                curLevel = objMeta.level;
+                curLevelArray = Ember.A([curObj, _obj]);
               }
             }
           }
           else {
-            cla.push(obj);
+            curLevelArray.push(obj);
           }
         }
-        if(cl === level || cl === -1) {
-          newval = cla;
+        if(curLevel === level || curLevel === -1) {
+          newval = curLevelArray;
         }
         else {
-          newval = Ember.A([getObjTillLevel(cla, meta, hasManyHierarchy, cl, level)]);
+          newval = Ember.A([getObjTillLevel(curLevelArray, meta, hasManyHierarchy, curLevel, level)]);
         }
       }
       this["_" + key] = newval;
       return newval;
-    }
-    else {
-      return this["_" + key];
-    }
+    },
   });
 }

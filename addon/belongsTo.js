@@ -33,21 +33,21 @@ export default function belongsTo(modelClass, modelClassKey, defaultKey, mixin, 
   hasMixin = mixin instanceof Ember.Mixin,
   hasMixinInheritance = !hasMixin && Ember.typeOf(mixin) === "object",
   hasRegistry = registry && idKey;
-  return Ember.computed(function(key, newval) {
-    if(Ember.typeOf(modelClass) === 'string') {
-      modelClass = Ember.get(modelClass);
-      hasInheritance = Ember.typeOf(modelClass) !== "class";
-    }
-    if(Ember.typeOf(mixin) === 'string') {
-      mixin = Ember.get(mixin);
-      hasMixin = mixin instanceof Ember.Mixin;
-      hasMixinInheritance = !hasMixin && Ember.typeOf(mixin) === "object";
-    }
-    if(Ember.typeOf(registry) === 'string') {
-      registry = Ember.get(registry);
-      hasRegistry = registry && idKey;
-    }
-    if(arguments.length > 1) {
+  return Ember.computed({
+    set : function(key, newval) {
+      if(Ember.typeOf(modelClass) === 'string') {
+        modelClass = Ember.get(modelClass);
+        hasInheritance = Ember.typeOf(modelClass) !== "class";
+      }
+      if(Ember.typeOf(mixin) === 'string') {
+        mixin = Ember.get(mixin);
+        hasMixin = mixin instanceof Ember.Mixin;
+        hasMixinInheritance = !hasMixin && Ember.typeOf(mixin) === "object";
+      }
+      if(Ember.typeOf(registry) === 'string') {
+        registry = Ember.get(registry);
+        hasRegistry = registry && idKey;
+      }
       if(newval) {
         var classObj = modelClass;
         if(hasRegistry && registry[newval[idKey]]) {
@@ -73,9 +73,10 @@ export default function belongsTo(modelClass, modelClassKey, defaultKey, mixin, 
       }
       this["_" + key] = newval;
       return newval;
-    }
-    else {
+    },
+
+    get : function(key) {
       return this["_" + key];
-    }
+    },
   });
 }

@@ -1,6 +1,6 @@
 {
   "name": "ember-object-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Object utils for Ember",
   "directories": {
     "doc": "doc",
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/AdityaHegde/ember-object-utils",
   "engines": {
     "node": ">= 0.10.0"
   },
