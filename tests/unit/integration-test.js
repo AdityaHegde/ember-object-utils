@@ -39,10 +39,10 @@ test("hasMany with ObjectWithArrayMixin", function(assert) {
   object = Ember.Object.extend(EmberObjectUtils.ObjectWithArrayMixin, {
     arrayProps : ["vara"],
     vara : EmberObjectUtils.hasMany(map, "varab"),
-    varaWasAdded : function(varas, idxs) {
+    varaWasAdded : function(varas/*, idxs*/) {
       addedData = Ember.A(varas).mapBy("varaa");
     },
-    varaWillBeDeleted : function(varas, idxs) {
+    varaWillBeDeleted : function(varas/*, idxs*/) {
       removedData = Ember.A(varas).mapBy("varaa");
     },
   }),

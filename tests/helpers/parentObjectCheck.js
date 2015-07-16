@@ -12,5 +12,5 @@ function _parentObjectCheck(obj) {
 }
 
 export default Ember.Test.registerHelper("parentObjectCheck", function (app, obj) {
-  _parentObjectCheck();
+  _parentObjectCheck(obj);
 });

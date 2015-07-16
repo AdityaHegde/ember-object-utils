@@ -1,10 +1,10 @@
+/* jshint ignore:start */
 import Ember from "ember";
 import EmberObjectUtils from "ember-object-utils";
 import { module, test } from "qunit";
 
 module("EmberObjectUtils.objectWithArrayMixin");
 
-/* jshint ignore:start */
 function setupObjectWithArrayMixin() {
   var 
   setup = {

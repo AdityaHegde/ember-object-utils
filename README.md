@@ -1,4 +1,4 @@
-# Ember-utils-core
+# ember-object-utils
 
 Docs : http://adityahegde.github.io/ember-object-utils/
 

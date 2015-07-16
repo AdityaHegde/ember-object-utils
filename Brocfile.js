@@ -11,13 +11,6 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
   behave. You most likely want to be modifying `./index.js` or app's Brocfile
 */
 
-var app = new EmberAddon({
-  /*minifyJS : {
-    enabled : true,
-  },
-  sourcemaps : {
-    enabled : false,
-  },*/
-});
+var app = new EmberAddon();
 
 module.exports = app.toTree();

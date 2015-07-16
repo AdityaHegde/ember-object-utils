@@ -2,14 +2,6 @@ import Ember from "ember";
 import EmberObjectUtils from "ember-object-utils";
 import { module, test } from "qunit";
 
-function getOffset(ele, type, parentSelector) {
-  parentSelector = parentSelector || "body";
-  if(!Ember.isEmpty($(ele).filter(parentSelector))) {
-    return 0;
-  }
-  return ele["offset"+type] + getOffset(ele.offsetParent, type, parentSelector);
-}
-
 function emberDeepEqual(src, tar) {
   for(var k in tar) {
     var kObj = src.get(k);
