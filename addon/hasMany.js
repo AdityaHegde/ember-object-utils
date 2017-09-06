@@ -29,11 +29,11 @@ export default function hasMany(modelClass, modelClassKey, defaultKey, registry,
   return Ember.computed({
     set : function(key, newval) {
       if(Ember.typeOf(modelClass) === 'string') {
-        modelClass = Ember.get(modelClass);
+        modelClass = this.get(modelClass);
         hasInheritance = Ember.typeOf(modelClass) !== "class";
       }
       if(Ember.typeOf(registry) === 'string') {
-        registry = Ember.get(registry);
+        registry = this.get(registry);
         hasRegistry = registry && idKey;
       }
       if(newval && newval.length) {
@@ -59,11 +59,7 @@ export default function hasMany(modelClass, modelClassKey, defaultKey, registry,
           newval.splice(i, 1, obj);
         }
       }
-      this["_" + key] = newval;
       return newval;
-    },
-    get : function(key) {
-      return this["_" + key];
     },
   });
 }

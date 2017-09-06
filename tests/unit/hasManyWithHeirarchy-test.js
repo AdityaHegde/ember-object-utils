@@ -26,11 +26,22 @@ function emberDeepEqual(src, tar) {
 module("EmberObjectUtils.hasManyWithHierarchy");
 
 test("2 Levels of hierarchy", function(assert) {
-  Ember.hierarchy = [
+  var objClass = Ember.Object.extend({
+    children : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 0, "type"),
+  }),
+  base00 = Ember.Object.extend({
+    vara : "level0-base0",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 1, "type")
+  }),
+  base01 = Ember.Object.extend({
+    vara : "level0-base1",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 1, "type")
+  });
+  base00.hierarchy = base01.hierarchy = objClass.hierarchy = [
     {
       classes : {
-        base00 : Ember.Object.extend({vara : "level0-base0", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 1, "type")}),
-        base01 : Ember.Object.extend({vara : "level0-base1", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 1, "type")}),
+        base00 : base00,
+        base01 : base01,
       },
       base : "base00",
       keysInArray : ["type", "children0", "varb", "varc"],
@@ -45,10 +56,7 @@ test("2 Levels of hierarchy", function(assert) {
       keysInArray : ["type", "varb", "varc"],
     },
   ];
-  EmberObjectUtils.registerHierarchy(Ember.hierarchy);
-  var objClass = Ember.Object.extend({
-    children : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 0, "type"),
-  });
+  EmberObjectUtils.registerHierarchy(objClass.hierarchy);
 
   var assertions = [{
     input : Ember.A([{
@@ -183,11 +191,30 @@ test("2 Levels of hierarchy", function(assert) {
 });
 
 test("3 Levels of hierarchy", function(assert) {
-  Ember.hierarchy = [
+  var objClass = Ember.Object.extend({
+    children : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 0, "type"),
+  }),
+  base00 = Ember.Object.extend({
+    vara : "level0-base0",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 1, "type")
+  }),
+  base01 = Ember.Object.extend({
+    vara : "level0-base1",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 1, "type")
+  }),
+  base10 = Ember.Object.extend({
+    vara : "level1-base0",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 2, "type")
+  }),
+  base11 = Ember.Object.extend({
+    vara : "level1-base1",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 2, "type")
+  });
+  base00.hierarchy = base01.hierarchy = base10.hierarchy = base11.hierarchy = objClass.hierarchy = [
     {
       classes : {
-        base00 : Ember.Object.extend({vara : "level0-base0", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 1, "type")}),
-        base01 : Ember.Object.extend({vara : "level0-base1", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 1, "type")}),
+        base00 : base00,
+        base01 : base01,
       },
       base : "base00",
       keysInArray : ["type", "children0", "varb", "varc"],
@@ -195,8 +222,8 @@ test("3 Levels of hierarchy", function(assert) {
     },
     {
       classes : {
-        base10 : Ember.Object.extend({vara : "level1-base0", children1 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 2, "type")}),
-        base11 : Ember.Object.extend({vara : "level1-base1", children1 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 2, "type")}),
+        base10 : base10,
+        base11 : base11,
       },
       base : "base10",
       keysInArray : ["type", "children1", "varb", "varc"],
@@ -211,10 +238,7 @@ test("3 Levels of hierarchy", function(assert) {
       keysInArray : ["type", "varb", "varc"],
     },
   ];
-  EmberObjectUtils.registerHierarchy(Ember.hierarchy);
-  var objClass = Ember.Object.extend({
-    children : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 0, "type"),
-  });
+  EmberObjectUtils.registerHierarchy(objClass.hierarchy);
 
   var assertions = [{
     input : Ember.A([
@@ -286,11 +310,30 @@ test("3 Levels of hierarchy", function(assert) {
 });
 
 test("EmberObjectUtils.addToHierarchy", function(assert) {
-  Ember.hierarchy = [
+  var objClass = Ember.Object.extend({
+    children : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 0, "type"),
+  }),
+  base00 = Ember.Object.extend({
+    vara : "level0-base0",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 1, "type")
+  }),
+  base01 = Ember.Object.extend({
+    vara : "level0-base1",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 1, "type")
+  }),
+  base10 = Ember.Object.extend({
+    vara : "level1-base0",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 2, "type")
+  }),
+  base11 = Ember.Object.extend({
+    vara : "level1-base1",
+    children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 2, "type")
+  });
+  base00.hierarchy = base01.hierarchy = base10.hierarchy = base11.hierarchy = objClass.hierarchy = [
     {
       classes : {
-        base00 : Ember.Object.extend({vara : "level0-base0", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 1, "type")}),
-        base01 : Ember.Object.extend({vara : "level0-base1", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 1, "type")}),
+        base00 : base00,
+        base01 : base01,
       },
       base : "base00",
       keysInArray : ["type", "children0", "varb", "varc"],
@@ -298,8 +341,8 @@ test("EmberObjectUtils.addToHierarchy", function(assert) {
     },
     {
       classes : {
-        base10 : Ember.Object.extend({vara : "level1-base0", children1 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 2, "type")}),
-        base11 : Ember.Object.extend({vara : "level1-base1", children1 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 2, "type")}),
+        base10 : base10,
+        base11 : base11,
       },
       base : "base10",
       keysInArray : ["type", "children1", "varb", "varc"],
@@ -314,15 +357,12 @@ test("EmberObjectUtils.addToHierarchy", function(assert) {
       keysInArray : ["type", "varb", "varc"],
     },
   ];
-  EmberObjectUtils.registerHierarchy(Ember.hierarchy);
-  var objClass = Ember.Object.extend({
-    children : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 0, "type"),
-  });
+  EmberObjectUtils.registerHierarchy(objClass.hierarchy);
 
   var assertions = [{
     input : {
       type : "base02",
-      classObj : Ember.Object.extend({vara : "level0-base2", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 1, "type")}),
+      classObj : Ember.Object.extend({vara : "level0-base2", children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 1, "type")}),
       level : 0,
       create : Ember.A([
         Ember.A(["base02", Ember.A([]), "varb0", "varc0"]),
@@ -336,7 +376,7 @@ test("EmberObjectUtils.addToHierarchy", function(assert) {
   }, {
     input : {
       type : "base12",
-      classObj : Ember.Object.extend({vara : "level1-base2", children0 : EmberObjectUtils.hasManyWithHierarchy("Ember.hierarchy", 2, "type")}),
+      classObj : Ember.Object.extend({vara : "level1-base2", children0 : EmberObjectUtils.hasManyWithHierarchy("constructor.hierarchy", 2, "type")}),
       level : 1,
       create : Ember.A([
         Ember.A(["base12", Ember.A([]), "varb0", "varc0"]),
@@ -353,8 +393,9 @@ test("EmberObjectUtils.addToHierarchy", function(assert) {
   }];
 
   for(var i = 0; i < assertions.length; i++) {
-    EmberObjectUtils.addToHierarchy(Ember.hierarchy, assertions[i].input.type, assertions[i].input.classObj, assertions[i].input.level);
-    assert.equal(Ember.hierarchy[assertions[i].input.level].classes[assertions[i].input.type], assertions[i].input.classObj);
+    assertions[i].input.classObj.hierarchy = objClass.hierarchy;
+    EmberObjectUtils.addToHierarchy(objClass.hierarchy, assertions[i].input.type, assertions[i].input.classObj, assertions[i].input.level);
+    assert.equal(objClass.hierarchy[assertions[i].input.level].classes[assertions[i].input.type], assertions[i].input.classObj);
     var c = objClass.create({
       children : assertions[i].input.create,
     });

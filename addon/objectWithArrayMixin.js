@@ -28,21 +28,18 @@ function getArrayFromRange(l, h, s) {
 export default Ember.Mixin.create({
   init : function() {
     this._super();
-    Ember.set(this, "arrayProps", Ember.A(this.get("arrayProps") || []));
+    this.set("arraysCache", {});
+    //Ember.set(this, "arrayProps", Ember.A(this.get("arrayProps") || []));
+    this.set("arrayProps", this.get("arrayProps") || Ember.A([]));
     this.addArrayObserverToProp("arrayProps");
-    Ember.set(this, "arrayProps.propKey", "arrayProps");
+    //Ember.set(this, "arrayProps.propKey", "arrayProps");
+    this.set("arrayProps.propKey", "arrayProps");
     this.arrayPropsWasAdded(this.get("arrayProps") || Ember.A([]));
   },
 
-  addBeforeObserverToProp : function(propKey) {
-    Ember.addBeforeObserver(this, propKey, this, "propWillChange");
-  },
-
-  removeBeforeObserverFromProp : function(propKey) {
-    Ember.removeBeforeObserver(this, propKey, this, "propWillChange");
-  },
-
   addObserverToProp : function(propKey) {
+    var arraysCache = this.get("arraysCache");
+    arraysCache[propKey] = this.get(propKey);
     Ember.addObserver(this, propKey, this, "propDidChange");
   },
 
@@ -61,7 +58,12 @@ export default Ember.Mixin.create({
 
   propDidChange : function(obj, key) {
     this.addArrayObserverToProp(key);
-    var prop = this.get(key);
+    var prop = this.get(key), arraysCache = this.get("arraysCache"), oldProp = arraysCache[key];
+    if(oldProp && oldProp.objectsAt) {
+      var idxs = getArrayFromRange(0, oldProp.get("length"));
+      this[key+"WillBeDeleted"](oldProp.objectsAt(idxs), idxs, true);
+    }
+    arraysCache[key] = prop;
     if(prop) {
       this.propArrayNotifyChange(prop, key);
     }
@@ -173,7 +175,6 @@ export default Ember.Mixin.create({
   arrayPropsWillBeDeleted : function(arrayProps) {
     for(var i = 0; i < arrayProps.length; i++) {
       this.removeArrayObserverFromProp(arrayProps[i]);
-      this.removeBeforeObserverFromProp(arrayProps[i]);
       this.removeObserverFromProp(arrayProps[i]);
     }
   },
@@ -205,7 +206,6 @@ export default Ember.Mixin.create({
       this.propArrayNotifyChange(prop, arrayProp);
     }
     this.addArrayObserverToProp(arrayProp);
-    this.addBeforeObserverToProp(arrayProp);
     this.addObserverToProp(arrayProp);
   },
 

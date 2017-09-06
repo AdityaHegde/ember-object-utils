@@ -32,7 +32,7 @@ export default function hasManyWithHierarchy(hasManyHierarchy, level, hkey) {
   return Ember.computed({
     set : function(key, newval) {
       if(Ember.typeOf(hasManyHierarchy) === "string") {
-        hasManyHierarchy = Ember.get(hasManyHierarchy);
+        hasManyHierarchy = this.get(hasManyHierarchy);
         meta = hasManyHierarchy.hierarchyMeta;
       }
       if(newval) {

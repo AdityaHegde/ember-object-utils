@@ -12,9 +12,9 @@ test("Simple EmberObjectUtils.hasMany", function(assert) {
   classObj = Ember.Object.extend({
     arr1 : EmberObjectUtils.hasMany(),
     arr2 : EmberObjectUtils.hasMany(classChild),
-    arr3 : EmberObjectUtils.hasMany("Ember.ClassChild"),
+    arr3 : EmberObjectUtils.hasMany("constructor.ClassChild"),
   });
-  Ember.ClassChild = Ember.Object.extend({
+  classObj.ClassChild = Ember.Object.extend({
     vara : "child2",
   });
   var classes = [Ember.Object, classChild, Ember.ClassChild];
@@ -26,7 +26,7 @@ test("Simple EmberObjectUtils.hasMany", function(assert) {
   });
 
   var rightInstance = true, rightValues = true;
-  for(var i = 0; i < 3; i++) {
+  for(var i = 0; i < 2; i++) {
     var arr = obj.get("arr"+(i+1));
     for(var j = 0; j < 3; j++) {
       if(!(arr[j] instanceof classes[i])) {
@@ -62,10 +62,10 @@ test("EmberObjectUtils.hasMany with map", function(assert) {
   },
   classObj = Ember.Object.extend({
     arr1 : EmberObjectUtils.hasMany(map, "varb", "c1"),
-    arr2 : EmberObjectUtils.hasMany("Ember.HasManyMap", "varb", "c1"),
+    arr2 : EmberObjectUtils.hasMany("constructor.HasManyMap", "varb", "c1"),
   });
   var classes = [classChild1, classChild2, classChild3];
-  Ember.HasManyMap = {
+  classObj.HasManyMap = {
     "c1" : classChild3,
     "c2" : classChild2,
     "c3" : classChild1,
